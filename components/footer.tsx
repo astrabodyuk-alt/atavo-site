@@ -1,8 +1,13 @@
-const services = ["Web Design", "Web Apps", "Automation"];
+const services = [
+  { label: "Web Design", href: "#services" },
+  { label: "SaaS & Tools", href: "#services" },
+  { label: "Automation", href: "#services" },
+];
+
 const company = [
   { label: "Work", href: "#work" },
   { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Free Audit", href: "#audit-form" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -17,7 +22,7 @@ export default function Footer() {
             Atavo<span className="text-[#00c47a]">Agency</span>
           </p>
           <p className="text-[#6b6b6b] text-sm mt-2">
-            Web design for the high street.
+            Custom websites &amp; tools for UK businesses.
           </p>
           <a
             href="mailto:hello@atavo.co.uk"
@@ -32,11 +37,11 @@ export default function Footer() {
           <p className="text-black font-semibold mb-4">Services</p>
           {services.map((s) => (
             <a
-              key={s}
-              href="#services"
+              key={s.label}
+              href={s.href}
               className="text-[#6b6b6b] hover:text-black text-sm transition-colors block mb-2"
             >
-              {s}
+              {s.label}
             </a>
           ))}
         </div>

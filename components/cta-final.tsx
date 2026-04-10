@@ -6,35 +6,36 @@ export default function CTAFinal() {
       <Reveal>
         {/* Title */}
         <h2 className="font-heading font-black text-5xl md:text-7xl text-white leading-none">
-          Ready to get
+          Ready to grow
           <br />
+          your business{" "}
           <span className="text-[#00c47a]">online?</span>
         </h2>
 
         {/* Subtitle */}
-        <p className="mt-6 text-white/60 text-xl">7 days. £699. No surprises.</p>
+        <p className="mt-6 text-white/60 text-xl">
+          Free business audit. Custom build. Live in 7 days.
+        </p>
 
         {/* Buttons */}
         <div className="mt-10 flex gap-4 justify-center flex-wrap">
           <a
-            href="https://buy.stripe.com/XXXX"
-            className="bg-white text-black font-bold px-10 py-5 rounded-full text-lg hover:bg-[#00c47a] transition"
+            href="#audit-form"
+            className="bg-[#00c47a] text-black font-bold px-10 py-5 rounded-full text-lg hover:brightness-110 transition"
           >
-            Start your project →
+            Claim your free audit →
           </a>
           <a
-            href="https://lushbites2.vercel.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border border-white/30 text-white px-10 py-5 rounded-full text-lg hover:border-white transition"
+            href="#pricing"
+            className="border-2 border-white text-white px-10 py-5 rounded-full text-lg font-semibold hover:bg-white hover:text-black transition"
           >
-            See the demo
+            See our services
           </a>
         </div>
 
         {/* Email */}
         <p className="mt-8">
-          <span className="text-white/50 text-sm">Or email us: </span>
+          <span className="text-white/40 text-sm">Or email us: </span>
           <a
             href="mailto:hello@atavo.co.uk"
             className="text-[#00c47a] text-sm hover:underline"
