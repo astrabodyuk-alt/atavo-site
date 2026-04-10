@@ -22,7 +22,7 @@ export default function Nav() {
 
         {/* CTA */}
         <a
-          href="#pricing"
+          href="#audit-form"
           className="bg-black text-white font-semibold px-5 py-2 rounded-full hover:bg-[#00c47a] hover:text-black transition text-sm"
         >
           Start project →

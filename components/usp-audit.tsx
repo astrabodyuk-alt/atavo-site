@@ -61,7 +61,7 @@ export default function USPAudit() {
             </p>
 
             <a
-              href="#pricing"
+              href="#audit-form"
               className="mt-6 bg-[#00c47a] text-black font-semibold px-6 py-3 rounded-full w-full text-center hover:brightness-110 transition block"
             >
               Claim your free audit →

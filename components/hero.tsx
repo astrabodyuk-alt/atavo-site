@@ -27,7 +27,7 @@ export default function Hero() {
 
       {/* CTA */}
       <a
-        href="#pricing"
+        href="#audit-form"
         className="mt-10 bg-black text-white px-10 py-5 rounded-full text-lg font-semibold hover:bg-[#00c47a] hover:text-black transition-all duration-300 cursor-pointer"
       >
         Let&apos;s build yours →

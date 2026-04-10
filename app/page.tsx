@@ -1,6 +1,7 @@
 import Nav from "@/components/nav";
 import Hero from "@/components/hero";
 import USPAudit from "@/components/usp-audit";
+import AuditForm from "@/components/audit-form";
 import DemoStrip from "@/components/demo-strip";
 import Services from "@/components/services";
 import HowItWorks from "@/components/how-it-works";
@@ -17,6 +18,7 @@ export default function Home() {
       <main>
         <Hero />
         <USPAudit />
+        <AuditForm />
         <DemoStrip />
         <Services />
         <HowItWorks />
