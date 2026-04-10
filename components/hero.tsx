@@ -1,5 +1,6 @@
 'use client'
 import { ChevronDown } from "lucide-react";
+import LiquidMetalButton from "@/components/ui/liquid-metal-button";
 
 export default function Hero() {
   const scrollToNext = () => {
@@ -26,12 +27,14 @@ export default function Hero() {
       </p>
 
       {/* CTA */}
-      <a
-        href="#audit-form"
-        className="mt-10 bg-black text-white px-10 py-5 rounded-full text-lg font-semibold hover:bg-[#00c47a] hover:text-black transition-all duration-300 cursor-pointer"
-      >
-        Let&apos;s build yours →
-      </a>
+      <div className="mt-10">
+        <LiquidMetalButton
+          label="Let's build yours"
+          onClick={() => {
+            document.getElementById("audit-form")?.scrollIntoView({ behavior: "smooth" });
+          }}
+        />
+      </div>
 
       {/* Scroll arrow */}
       <button
