@@ -260,6 +260,22 @@ npm install lucide-react
 
 ---
 
+## USP — UNIQUE VALUE
+
+Atavo's main differentiator:
+Every project includes a **FREE Business Audit (worth £299)**:
+
+1. **Deep understanding** of the client's business, goals and vision
+2. **Full competitive analysis** — we research ALL their competitors to identify positioning opportunities
+3. **Strategic recommendations** before we build anything
+
+This audit is included in every project (website, SaaS, automation).
+It's what separates Atavo from cheap template agencies.
+
+**Messaging:** "Worth £299. Yours free."
+
+---
+
 ## 15. RÈGLES DE DÉVELOPPEMENT
 
 1. **Mobile first.** Tout doit être parfait sur iPhone 13 (390px) avant le desktop.
