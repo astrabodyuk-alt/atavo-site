@@ -1,86 +1,81 @@
-import { CheckCircle } from "lucide-react";
-import Reveal from "@/components/reveal";
-
-const steps = [
-  {
-    number: "01",
-    tag: "Free Audit — 48h",
-    title: "We analyse your business.",
-    description:
-      "We study your business, your competitors, and your market. You receive a full report worth £299 — completely free.",
-  },
-  {
-    number: "02",
-    tag: "We Build — 7 days",
-    title: "Built from scratch, for you.",
-    description:
-      "Website, SaaS tool, or automation — designed and built from scratch for your business. No templates. No shortcuts.",
-  },
-  {
-    number: "03",
-    tag: "You Launch & Grow",
-    title: "Go live with confidence.",
-    description:
-      "Your project goes live. We stay available for ongoing support and improvements whenever you need us.",
-  },
-];
+'use client'
+import { TextParallaxContent } from "@/components/ui/text-parallax-content";
+import { ArrowUpRight } from "lucide-react";
 
 export default function HowItWorks() {
   return (
-    <section className="bg-white py-24 px-6 md:px-12">
-      {/* Label */}
-      <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body">
-        THE PROCESS
-      </p>
+    <div id="process" className="bg-white">
+      <TextParallaxContent
+        imgUrl="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2426&auto=format&fit=crop"
+        subheading="Step 01 — Free Audit"
+        heading="We analyse your business."
+      >
+        <ProcessContent
+          title="A full report worth £299 — completely free."
+          description="We study your business, your competitors, and your entire market. Within 48 hours, you receive a detailed audit covering your online presence, SEO performance, and competitor analysis — with clear recommendations to grow."
+          secondLine="No commitment. No hidden fees. Just clarity on where you stand and where you could be."
+          ctaText="Claim your free audit"
+          ctaHref="#audit-form"
+        />
+      </TextParallaxContent>
 
-      {/* Title */}
-      <h2 className="mt-4 font-heading font-black text-4xl md:text-5xl text-black max-w-2xl leading-tight">
-        From idea to live in 7 days.
-      </h2>
+      <TextParallaxContent
+        imgUrl="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2672&auto=format&fit=crop"
+        subheading="Step 02 — We Build"
+        heading="Built from scratch, for you."
+      >
+        <ProcessContent
+          title="Website, SaaS tool, or automation — delivered in 7 days."
+          description="No templates. No shortcuts. We design and build everything custom for your business. Whether it's a website that converts, a booking system that saves you hours, or automation that runs while you sleep."
+          secondLine="You stay in the loop at every step. We build fast, but we never compromise on quality."
+          ctaText="See our services"
+          ctaHref="#services"
+        />
+      </TextParallaxContent>
 
-      {/* Steps */}
-      <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-          {steps.map((step) => (
-            <div
-              key={step.number}
-              className="bg-[#f7f7f7] rounded-2xl p-8 border border-[#e8e8e8] flex flex-col gap-4"
-            >
-              <span className="font-heading font-black text-7xl text-[#00c47a] opacity-30 leading-none">
-                {step.number}
-              </span>
+      <TextParallaxContent
+        imgUrl="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=2670&auto=format&fit=crop"
+        subheading="Step 03 — You Launch"
+        heading="Go live with confidence."
+      >
+        <ProcessContent
+          title="Your project goes live. We stay by your side."
+          description="Launch day is just the beginning. We handle deployment, domain setup, and make sure everything runs perfectly. Then we stay available for ongoing support and improvements whenever you need us."
+          secondLine="Your business grows online. That's the goal. That's what we deliver."
+          ctaText="Start your project"
+          ctaHref="#audit-form"
+        />
+      </TextParallaxContent>
+    </div>
+  );
+}
 
-              <span className="text-[#00c47a] text-xs font-semibold tracking-widest uppercase">
-                {step.tag}
-              </span>
-
-              <h3 className="text-black font-heading font-bold text-xl">
-                {step.title}
-              </h3>
-
-              <p className="text-[#6b6b6b] text-sm leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        {/* Guarantee line */}
-        <p className="mt-10 flex items-center justify-center gap-2 text-[#6b6b6b] text-sm">
-          <CheckCircle className="text-[#00c47a] w-4 h-4 shrink-0" />
-          Average delivery: 7 days. Guaranteed.
-        </p>
-
-        {/* CTA */}
-        <div className="mt-8 flex justify-center">
-          <a
-            href="#audit-form"
-            className="bg-black text-white font-bold px-10 py-4 rounded-full hover:bg-[#00c47a] hover:text-black transition"
-          >
-            Claim your free audit →
-          </a>
-        </div>
-      </Reveal>
-    </section>
+function ProcessContent({
+  title,
+  description,
+  secondLine,
+  ctaText,
+  ctaHref,
+}: {
+  title: string;
+  description: string;
+  secondLine: string;
+  ctaText: string;
+  ctaHref: string;
+}) {
+  return (
+    <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 pb-24 pt-12 md:grid-cols-12">
+      <h2 className="col-span-1 text-3xl font-bold md:col-span-4">{title}</h2>
+      <div className="col-span-1 md:col-span-8">
+        <p className="mb-4 text-xl text-neutral-600 md:text-2xl">{description}</p>
+        <p className="mb-8 text-xl text-neutral-600 md:text-2xl">{secondLine}</p>
+        <a
+          href={ctaHref}
+          className="w-full rounded bg-neutral-900 px-9 py-4 text-xl text-white transition-colors hover:bg-neutral-700 md:w-fit inline-block"
+        >
+          {ctaText} <ArrowUpRight className="inline h-5 w-5" />
+        </a>
+      </div>
+    </div>
   );
 }
