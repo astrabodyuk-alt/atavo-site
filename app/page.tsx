@@ -1,5 +1,6 @@
 import Nav from "@/components/nav";
 import Hero from "@/components/hero";
+import DemoStrip from "@/components/demo-strip";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
+        <DemoStrip />
       </main>
     </>
   );
