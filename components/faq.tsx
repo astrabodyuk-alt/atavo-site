@@ -8,42 +8,42 @@ import {
 
 const faqs = [
   {
-    question: "Do I own the website after it's built?",
+    question: "What's included in the free audit?",
     answer:
-      "Yes. 100% code ownership. You receive the full source code on delivery and can host it anywhere. No monthly platform fees, no lock-in.",
+      "A full competitor analysis, SEO review, and digital strategy report tailored to your business. Valued at £299, included free with every project.",
   },
   {
-    question: "What if I don't have a logo or photos?",
+    question: "How long does it take to build my site?",
     answer:
-      "No problem. We create a professional logo for your business and use high-quality images if you don't have photos. No extra charge.",
+      "7 days from brief sign-off. SaaS tools take 2–3 weeks depending on complexity.",
   },
   {
-    question: "Can I make changes to the website myself?",
+    question: "Do I need to provide anything?",
     answer:
-      "Yes. We build on standard technology (Next.js + Tailwind) that any developer can maintain. We also offer a maintenance plan at £30/month if you prefer we handle updates.",
+      "Just your logo (if you have one), brand colours, and a few details about your business. We handle the rest.",
   },
   {
-    question: "How does payment work?",
+    question: "Can I pay in instalments?",
     answer:
-      "50% deposit to start (£349.50), balance on delivery. Pay by card via Stripe or split into 3 monthly payments of £233 with Klarna — interest free.",
+      "Yes. We offer 3× monthly payments via Klarna — so you can start for £233 today.",
   },
   {
-    question: "What information do you need from me?",
+    question: "What happens after launch?",
     answer:
-      "Just a short brief: your business name, what you do, your logo (or we create one), and your contact details. Takes about 30 minutes.",
+      "We offer ongoing support and maintenance. Ask us about our monthly retainer packages.",
   },
 ];
 
 export default function FAQ() {
   return (
     <section id="faq" className="bg-white py-24 px-6 md:px-12">
-      {/* Section label */}
-      <p className="text-xs font-semibold tracking-[0.3em] text-[#00c47a] uppercase font-body">
+      {/* Label */}
+      <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body">
         FAQ
       </p>
 
       {/* Title */}
-      <h2 className="mt-4 font-heading font-bold text-4xl md:text-5xl text-black">
+      <h2 className="mt-4 font-heading font-black text-4xl md:text-5xl text-black">
         Frequently asked questions.
       </h2>
 
