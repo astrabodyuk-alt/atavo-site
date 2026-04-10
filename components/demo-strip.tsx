@@ -1,7 +1,5 @@
 import Reveal from "@/components/reveal";
 
-const tags = ["Restaurant", "Portsmouth", "7 days", "£699"];
-
 export default function DemoStrip() {
   return (
     <section id="work" className="bg-[#f7f7f7] py-24 px-6 md:px-12">
@@ -15,54 +13,30 @@ export default function DemoStrip() {
         See what we built in 7 days.
       </h2>
 
-      {/* Project card */}
+      {/* Video showcase */}
       <Reveal>
-        <div className="mt-16 bg-white border border-[#e8e8e8] rounded-2xl overflow-hidden">
-          {/* Preview area */}
-          <div className="h-64 md:h-80 bg-[#f7f7f7] overflow-hidden relative">
-            <iframe
-              src="https://lushbites2.vercel.app"
-              className="w-full h-full"
-              style={{
-                pointerEvents: "none",
-                transform: "scale(0.75)",
-                transformOrigin: "top left",
-                width: "133%",
-                height: "133%",
-              }}
-              loading="lazy"
-              title="Lush Bites Portsmouth — live preview"
-            />
+        <div className="relative mt-16 rounded-2xl overflow-hidden bg-black">
+          <div className="absolute top-4 left-4 z-10">
+            <span className="bg-white/10 backdrop-blur-sm text-white text-xs font-semibold px-3 py-1 rounded-full tracking-widest uppercase">
+              Animation example
+            </span>
           </div>
-
-          {/* Card bottom */}
-          <div className="p-6 md:p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-            {/* Left */}
-            <div>
-              <h3 className="text-black font-heading font-bold text-2xl">
-                Lush Bites Portsmouth
-              </h3>
-              <div className="flex flex-wrap gap-2 mt-3">
-                {tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-[#f7f7f7] text-[#6b6b6b] border border-[#e8e8e8] text-xs px-3 py-1 rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Right */}
-            <a
-              href="https://lushbites2.vercel.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-black text-white px-6 py-3 rounded-full text-sm hover:bg-[#00c47a] hover:text-black transition shrink-0"
-            >
-              View live site →
-            </a>
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-[400px] md:h-[600px] object-cover"
+          >
+            <source src="/videos/burger-animation.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-8">
+            <p className="text-white font-heading font-bold text-2xl md:text-3xl">
+              This is what we can build for you.
+            </p>
+            <p className="text-white/60 text-sm mt-2">
+              Premium animations, custom design, built around your brand.
+            </p>
           </div>
         </div>
       </Reveal>
