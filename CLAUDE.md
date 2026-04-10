@@ -16,36 +16,43 @@
 
 ## 2. OBJECTIF DU SITE
 
-Convertir des restaurants et commerces locaux UK en clients web à £699.
+Atavo Agency builds 3 things for UK businesses:
+1. **Professional websites** — from £699
+2. **Custom SaaS & business tools** — lead tracking, client portals, booking systems
+3. **Automation** — email sequences, CRM, AI workflows
+
+All built custom. All industries. Goal: help businesses save time and scale.
+
 Le site est une **vitrine commerciale** — pas un portfolio artistique.
 
 **CTA principal :** "Get your free audit" ou "Start your project — £699"
-**CTA secondaire :** Voir la démo → lushbites2.vercel.app
 **Paiement :** Stripe + Klarna (3× £233/mois)
 
 ---
 
 ## 3. CIBLE CLIENT
 
-- Restaurants, takeaways, cafés, coiffeurs, artisans UK
-- Pas de site web OU site web vieux de 5+ ans
-- Taille : 1-15 employés
-- Budget confort : £500-£1,000
-- Douleur principale : "Je perds des clients car je ne suis pas en ligne"
+Any UK business that needs to go online or automate:
+- Restaurants, salons, trades, coaches, e-commerce, clinics, agencies
+- Not limited to the food industry
+- No website OR outdated website (5+ years old)
+- Size: 1–50 employees
+- Budget comfort: £500–£5,000
+- Pain points: "I'm losing customers online" / "I waste hours on manual tasks"
 
 ---
 
 ## 4. BRAND IDENTITY
 
-### Couleurs
+### Couleurs — light theme (current)
 ```css
---color-bg:       #0d1117;   /* Fond principal noir */
---color-surface:  #161b22;   /* Cards, surfaces */
---color-border:   #21262d;   /* Bordures subtiles */
---color-green:    #00f5a0;   /* Accent principal — vert néon */
---color-blue:     #00b4d8;   /* Accent secondaire — bleu */
---color-white:    #f0f6fc;   /* Texte principal */
---color-muted:    #8b949e;   /* Texte secondaire */
+--color-bg:       #ffffff;   /* Background white */
+--color-surface:  #f7f7f7;   /* Cards, surfaces */
+--color-border:   #e8e8e8;   /* Borders */
+--color-green:    #00c47a;   /* Accent — readable green on white */
+--color-text:     #0d0d0d;   /* Primary text */
+--color-muted:    #6b6b6b;   /* Secondary text */
+--color-black:    #0d0d0d;   /* CTAs, bold elements */
 ```
 
 ### Typographie
@@ -61,13 +68,13 @@ Import Google Fonts :
 
 ### Style visuel
 - **Référence :** eloqwnt.com, KOTA (kota.co.uk), Ikon London
-- **Style :** Dark Premium + Exaggerated Minimalism
+- **Style :** Light Premium + Exaggerated Minimalism
 - Typographie oversized sur hero (clamp 3rem → 8rem)
-- Fond #0d1117 dominant, vert #00f5a0 comme seul accent
+- Fond blanc dominant, vert #00c47a comme seul accent couleur
+- CTAs noirs (bg-black) avec hover vert — sauf CTA Final section (bg-black)
 - Whitespace agressif entre sections
 - Pas de WebGL, pas de marquee, pas d'animations complexes
-- Scroll reveal : fade-in + slide-up (150-300ms, Tailwind animate)
-- Curseur hover vert sur les project cards
+- Scroll reveal : fade-in + slide-up (700ms, IntersectionObserver)
 - Lazy load images avec placeholder couleur
 
 ---
@@ -94,21 +101,19 @@ Import Google Fonts :
 
 ### Headline (oversized)
 ```
-We build websites
-that get you
-more customers.
+We build websites & tools
+that help your business grow.
 ```
 
 ### Sous-titre
 ```
-Premium web design for UK restaurants and local businesses.
-From £699. Live in 7 days.
+Custom web design and business software for UK companies.
+From £699.
 ```
 
-### CTA Buttons
+### CTA Button
 ```
-[Get your free audit →]     (bg: #00f5a0, text: #0d1117)
-[See a live demo]           (border: #00f5a0, text: #00f5a0)
+[Get your free audit 👋]    (bg: #0d0d0d, text: white, hover: #00c47a)
 ```
 
 ### Stats strip sous le hero
@@ -123,22 +128,22 @@ From £699. Live in 7 days.
 
 ## 7. SERVICES
 
-### Service 1 — Web Design
+### Service 1 — Website
 **Titre :** Professional Website
 **Prix :** From £699
-**Inclus :** Mobile responsive, SEO-ready, Google Analytics, Contact form, 90 days maintenance
+**Inclus :** Custom design, any industry, mobile responsive, SEO-ready, 90 days maintenance
 **Délai :** 7 days
 
-### Service 2 — Web App / SaaS
-**Titre :** Web Application
+### Service 2 — SaaS / Business Tool
+**Titre :** SaaS & Business Tools
 **Prix :** From £1,499
-**Inclus :** Custom features, Database, User accounts, Admin panel
-**Délai :** 2-4 weeks
+**Inclus :** Lead tracking, booking systems, client portals, custom dashboards
+**Délai :** 2–4 weeks
 
 ### Service 3 — Automation
 **Titre :** Business Automation
 **Prix :** From £299/month
-**Inclus :** AI workflows, Email automation, CRM setup, Make.com/n8n
+**Inclus :** Email sequences, CRM, AI workflows, Make.com/n8n
 **Délai :** 1 week
 
 ---
@@ -188,14 +193,11 @@ or pay in 3× £233 with Klarna
 
 ---
 
-## 11. CASE STUDY — LUSH BITES PORTSMOUTH
+## 11. CASE STUDIES
 
-**Business :** Lush Bites — Smash burger restaurant, Portsmouth UK
-**Challenge :** No online presence, losing customers to competitors
-**Solution :** Full website with online menu, click & collect, Google reviews
-**Tech :** Next.js 14 + Tailwind, deployed on Vercel
-**Timeline :** 7 days
-**Live demo :** lushbites2.vercel.app
+Case studies coming soon — real client screenshots and results will be added here once projects are ready.
+
+**Demo strip:** Do not use lushbites2.vercel.app iframe. Show a placeholder ("Case studies coming soon") or a static card layout until real screenshots are available.
 
 ---
 
@@ -225,15 +227,20 @@ Remplacer XXXX par le vrai lien Stripe une fois créé.
 ## 13. STACK TECHNIQUE
 
 ```
-Framework:    Next.js 14 (App Router)
-Styling:      Tailwind CSS v3
-Components:   shadcn/ui
+Framework:    Next.js 16 (App Router)
+Styling:      Tailwind CSS v4 (CSS-based config via @theme inline in globals.css)
+Components:   shadcn/ui (Base UI / Nova preset — NOT Radix)
 Icons:        Lucide React
-Animations:   Tailwind animate + CSS transitions (pas Framer Motion)
-Fonts:        Google Fonts (Montserrat + Inter)
+Animations:   CSS transitions + IntersectionObserver Reveal component
+Fonts:        Google Fonts (Montserrat + Inter) via next/font/google
 Deploy:       Vercel
+GitHub:       astrabodyuk-alt/atavo-site
 Domain:       atavo.co.uk
 ```
+
+**Note:** Tailwind v4 uses no tailwind.config.ts — all theme tokens live in `@theme inline {}` block inside `app/globals.css`. shadcn uses Base UI (accordion prop is `multiple={false}`, not `type="single"`).
+
+**Note:** The Reveal component (`components/reveal.tsx`) is `'use client'` and uses IntersectionObserver with `threshold: 0.1`.
 
 ### Commandes setup
 ```bash
@@ -247,10 +254,9 @@ npm install lucide-react
 
 ## 14. REFERENCES VISUELLES
 
-- **eloqwnt.com** — Dark premium, typographie bold, whitespace agressif
+- **eloqwnt.com** — Light premium, centered layout, whitespace agressif
 - **kota.co.uk** — Portfolio grid minimaliste, lazy load subtil
 - **ikon.london** — Luxury minimal, confiance dans le whitespace
-- **lushbites2.vercel.app** — Notre propre démo (à showcaser)
 
 ---
 
@@ -279,7 +285,7 @@ app/
 components/
   nav.tsx             — Navigation sticky
   hero.tsx            — Hero section
-  demo-strip.tsx      — Featured work (Lush Bites)
+  demo-strip.tsx      — Featured work (placeholder until real case studies ready)
   services.tsx        — 3 services cards
   how-it-works.tsx    — 3 étapes
   pricing.tsx         — Pricing + Klarna
