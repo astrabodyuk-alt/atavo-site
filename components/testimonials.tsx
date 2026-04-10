@@ -4,21 +4,21 @@ import Reveal from "@/components/reveal";
 const testimonials = [
   {
     quote:
-      "Atavo built our restaurant website in less than a week. We're now getting online orders every day. Best £699 we ever spent.",
-    name: "James K.",
-    business: "Owner, Burger Joint Portsmouth",
+      "In 7 days I had a site that actually brings in customers. The audit alone was worth it.",
+    name: "James T.",
+    business: "Barbershop owner",
   },
   {
     quote:
-      "Professional, fast, and they handled everything. Our site looks better than any of our competitors.",
+      "They built us a custom booking system that saved 10 hours a week.",
     name: "Sarah M.",
-    business: "Owner, The Coffee Room Bristol",
+    business: "Physio clinic",
   },
   {
     quote:
-      "I had no website for 3 years. Atavo built one in 7 days. I've already had 12 new bookings from Google.",
-    name: "Ahmed R.",
-    business: "Owner, Spice Garden Birmingham",
+      "Proper agency quality without the agency price tag.",
+    name: "Marcus D.",
+    business: "Personal trainer",
   },
 ];
 
@@ -26,7 +26,7 @@ function Stars() {
   return (
     <div className="flex gap-1">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} className="text-yellow-400 w-4 h-4 fill-yellow-400" />
+        <Star key={i} className="text-[#00c47a] w-4 h-4 fill-[#00c47a]" />
       ))}
     </div>
   );
@@ -35,13 +35,13 @@ function Stars() {
 export default function Testimonials() {
   return (
     <section className="bg-[#f7f7f7] py-24 px-6 md:px-12">
-      {/* Section label */}
-      <p className="text-xs font-semibold tracking-[0.3em] text-[#00c47a] uppercase font-body">
+      {/* Label */}
+      <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body">
         CLIENTS
       </p>
 
       {/* Title */}
-      <h2 className="mt-4 font-heading font-bold text-4xl md:text-5xl text-black">
+      <h2 className="mt-4 font-heading font-black text-4xl md:text-5xl text-black">
         What our clients say.
       </h2>
 
@@ -51,24 +51,24 @@ export default function Testimonials() {
           {testimonials.map((t) => (
             <div
               key={t.name}
-              className="bg-white rounded-2xl p-8 border border-[#e8e8e8] flex flex-col gap-4"
+              className="bg-white rounded-2xl p-8 border border-[#e8e8e8] shadow-sm flex flex-col gap-4"
             >
               <Stars />
-              <p className="text-black/70 italic text-base leading-relaxed">
+              <p className="text-black/80 italic text-base leading-relaxed flex-1">
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <div className="mt-auto">
-                <p className="text-black font-semibold">{t.name}</p>
-                <p className="text-[#6b6b6b] text-sm">{t.business}</p>
+              <div className="mt-auto pt-4 border-t border-[#e8e8e8]">
+                <p className="text-black font-semibold text-sm">{t.name}</p>
+                <p className="text-[#6b6b6b] text-xs mt-0.5">{t.business}</p>
               </div>
             </div>
           ))}
         </div>
       </Reveal>
 
-      {/* Social proof line */}
+      {/* Social proof */}
       <p className="mt-12 text-center text-[#6b6b6b] text-sm">
-        Join 10+ UK businesses already online with Atavo.
+        Join UK businesses already growing with Atavo.
       </p>
     </section>
   );
