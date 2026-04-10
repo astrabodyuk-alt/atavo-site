@@ -30,51 +30,51 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-surface py-24 px-6 md:px-12">
+    <section className="bg-[#f7f7f7] py-24 px-6 md:px-12">
       {/* Section label */}
-      <p className="text-xs font-semibold tracking-[0.3em] text-green uppercase font-body">
+      <p className="text-xs font-semibold tracking-[0.3em] text-[#00c47a] uppercase font-body">
         THE PROCESS
       </p>
 
       {/* Title */}
-      <h2 className="mt-4 font-heading font-bold text-4xl md:text-5xl text-white max-w-2xl">
+      <h2 className="mt-4 font-heading font-bold text-4xl md:text-5xl text-black max-w-2xl">
         From idea to live site in 7 days.
       </h2>
 
       {/* Steps */}
       <Reveal>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-        {steps.map((step) => {
-          const Icon = step.icon;
-          return (
-            <div
-              key={step.number}
-              className="bg-bg rounded-2xl p-8 border border-border-dark flex flex-col gap-4"
-            >
-              <span className="font-heading font-black text-7xl text-green opacity-20 leading-none">
-                {step.number}
-              </span>
-              <Icon className="text-green w-6 h-6" />
-              <div>
-                <p className="text-green text-xs font-semibold tracking-widest uppercase mb-2">
-                  {step.day}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          {steps.map((step) => {
+            const Icon = step.icon;
+            return (
+              <div
+                key={step.number}
+                className="bg-white rounded-2xl p-8 border border-[#e8e8e8] flex flex-col gap-4"
+              >
+                <span className="font-heading font-black text-7xl text-black opacity-10 leading-none">
+                  {step.number}
+                </span>
+                <Icon className="text-[#00c47a] w-6 h-6" />
+                <div>
+                  <p className="text-[#00c47a] text-xs font-semibold tracking-widest uppercase mb-2">
+                    {step.day}
+                  </p>
+                  <h3 className="text-black font-heading font-bold text-xl">
+                    {step.title}
+                  </h3>
+                </div>
+                <p className="text-[#6b6b6b] text-sm leading-relaxed">
+                  {step.description}
                 </p>
-                <h3 className="text-white font-heading font-bold text-xl">
-                  {step.title}
-                </h3>
               </div>
-              <p className="text-muted text-sm leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-          );
-        })}
-      </div>
+            );
+          })}
+        </div>
       </Reveal>
 
       {/* Guarantee line */}
-      <p className="mt-12 flex items-center justify-center gap-2 text-muted text-sm">
-        <CheckCircle className="text-green w-4 h-4 shrink-0" />
+      <p className="mt-12 flex items-center justify-center gap-2 text-[#6b6b6b] text-sm">
+        <CheckCircle className="text-[#00c47a] w-4 h-4 shrink-0" />
         Average delivery: 7 days. Guaranteed.
       </p>
     </section>

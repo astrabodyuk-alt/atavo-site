@@ -36,37 +36,37 @@ const faqs = [
 
 export default function FAQ() {
   return (
-    <section className="bg-bg py-24 px-6 md:px-12">
+    <section id="faq" className="bg-white py-24 px-6 md:px-12">
       {/* Section label */}
-      <p className="text-xs font-semibold tracking-[0.3em] text-green uppercase font-body">
+      <p className="text-xs font-semibold tracking-[0.3em] text-[#00c47a] uppercase font-body">
         FAQ
       </p>
 
       {/* Title */}
-      <h2 className="mt-4 font-heading font-bold text-4xl md:text-5xl text-white">
+      <h2 className="mt-4 font-heading font-bold text-4xl md:text-5xl text-black">
         Frequently asked questions.
       </h2>
 
       {/* Accordion */}
       <Reveal>
-      <div className="mt-16 max-w-2xl mx-auto">
-        <Accordion multiple={false} className="w-full">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`item-${i}`}
-              className="border-b border-border-dark py-2"
-            >
-              <AccordionTrigger className="text-white font-semibold text-lg text-left hover:no-underline hover:text-green transition-colors">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="text-muted text-base leading-relaxed">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
+        <div className="mt-16 max-w-2xl mx-auto">
+          <Accordion multiple={false} className="w-full">
+            {faqs.map((faq, i) => (
+              <AccordionItem
+                key={i}
+                value={`item-${i}`}
+                className="border-b border-[#e8e8e8] py-2"
+              >
+                <AccordionTrigger className="text-black font-semibold text-lg text-left hover:no-underline hover:text-[#00c47a] transition-colors">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-[#6b6b6b] text-base leading-relaxed">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
       </Reveal>
     </section>
   );

@@ -8,20 +8,20 @@ const company = [
 
 export default function Footer() {
   return (
-    <footer className="bg-bg border-t border-border-dark py-16 px-6 md:px-12">
+    <footer className="bg-[#f7f7f7] border-t border-[#e8e8e8] py-16 px-6 md:px-12">
       {/* Top grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Left — brand */}
         <div>
-          <p className="font-heading font-bold text-2xl text-white">
-            Atavo<span className="text-green">Agency</span>
+          <p className="font-heading font-bold text-2xl text-black">
+            Atavo<span className="text-[#00c47a]">Agency</span>
           </p>
-          <p className="text-muted text-sm mt-2">
+          <p className="text-[#6b6b6b] text-sm mt-2">
             Web design for the high street.
           </p>
           <a
             href="mailto:hello@atavo.co.uk"
-            className="text-muted text-sm mt-4 block hover:text-white transition-colors"
+            className="text-[#6b6b6b] text-sm mt-4 block hover:text-black transition-colors"
           >
             hello@atavo.co.uk
           </a>
@@ -29,12 +29,12 @@ export default function Footer() {
 
         {/* Center — services */}
         <div>
-          <p className="text-white font-semibold mb-4">Services</p>
+          <p className="text-black font-semibold mb-4">Services</p>
           {services.map((s) => (
             <a
               key={s}
               href="#services"
-              className="text-muted hover:text-white text-sm transition-colors block mb-2"
+              className="text-[#6b6b6b] hover:text-black text-sm transition-colors block mb-2"
             >
               {s}
             </a>
@@ -43,12 +43,12 @@ export default function Footer() {
 
         {/* Right — company */}
         <div>
-          <p className="text-white font-semibold mb-4">Company</p>
+          <p className="text-black font-semibold mb-4">Company</p>
           {company.map((c) => (
             <a
               key={c.label}
               href={c.href}
-              className="text-muted hover:text-white text-sm transition-colors block mb-2"
+              className="text-[#6b6b6b] hover:text-black text-sm transition-colors block mb-2"
             >
               {c.label}
             </a>
@@ -57,11 +57,11 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-border-dark mt-12 pt-8 flex flex-col md:flex-row justify-between gap-2">
-        <p className="text-muted text-xs">
+      <div className="border-t border-[#e8e8e8] mt-12 pt-8 flex flex-col md:flex-row justify-between gap-2">
+        <p className="text-[#6b6b6b] text-xs">
           © 2026 Achievesphere Limited trading as Atavo Agency
         </p>
-        <p className="text-muted text-xs">Registered in England &amp; Wales</p>
+        <p className="text-[#6b6b6b] text-xs">Registered in England &amp; Wales</p>
       </div>
     </footer>
   );
