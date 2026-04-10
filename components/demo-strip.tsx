@@ -5,13 +5,19 @@ export default function DemoStrip() {
     <section id="work" className="bg-[#f7f7f7] py-24 px-6 md:px-12">
       {/* Section label */}
       <p className="text-xs font-semibold tracking-[0.3em] text-[#00c47a] uppercase font-body">
-        FEATURED WORK
+        THE DETAIL THAT MAKES ALL THE DIFFERENCE
       </p>
 
       {/* Title */}
-      <h2 className="mt-4 font-heading font-bold text-4xl md:text-5xl text-black max-w-2xl">
-        See what we built in 7 days.
+      <h2 className="mt-4 font-heading font-black text-4xl md:text-5xl text-black max-w-2xl leading-tight">
+        We create the wow effect your competitors don&apos;t have.
       </h2>
+
+      {/* Subtext */}
+      <p className="mt-4 text-[#6b6b6b] text-lg max-w-xl">
+        This animation was built for a fast food brand. We do the same for any
+        business — restaurant, clinic, agency, shop.
+      </p>
 
       {/* Video showcase */}
       <Reveal>
