@@ -3,7 +3,7 @@ import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
   const scrollToNext = () => {
-    const next = document.getElementById("work");
+    const next = document.getElementById("usp");
     if (next) next.scrollIntoView({ behavior: "smooth" });
   };
 

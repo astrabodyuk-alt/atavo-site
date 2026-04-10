@@ -5,7 +5,7 @@ const services = [
 ];
 
 const company = [
-  { label: "Work", href: "#work" },
+  { label: "Work", href: "#demo" },
   { label: "Pricing", href: "#pricing" },
   { label: "Free Audit", href: "#audit-form" },
   { label: "Contact", href: "#contact" },

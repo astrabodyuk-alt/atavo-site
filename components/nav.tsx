@@ -9,7 +9,7 @@ export default function Nav() {
 
         {/* Desktop nav links */}
         <nav className="hidden md:flex items-center gap-8">
-          <a href="#work" className="text-[#6b6b6b] hover:text-black transition-colors text-sm">
+          <a href="#demo" className="text-[#6b6b6b] hover:text-black transition-colors text-sm">
             Work
           </a>
           <a href="#services" className="text-[#6b6b6b] hover:text-black transition-colors text-sm">

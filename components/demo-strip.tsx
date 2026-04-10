@@ -2,7 +2,7 @@ import Reveal from "@/components/reveal";
 
 export default function DemoStrip() {
   return (
-    <section id="work" className="bg-[#f7f7f7] py-24 px-6 md:px-12">
+    <section id="demo" className="bg-[#f7f7f7] py-24 px-6 md:px-12">
       {/* Section label */}
       <p className="text-xs font-semibold tracking-[0.3em] text-[#00c47a] uppercase font-body">
         THE DETAIL THAT MAKES ALL THE DIFFERENCE

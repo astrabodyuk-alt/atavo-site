@@ -9,7 +9,7 @@ const points = [
 
 export default function USPAudit() {
   return (
-    <section className="bg-black text-white py-20 px-6 md:px-12">
+    <section id="usp" className="bg-black text-white py-20 px-6 md:px-12">
       <Reveal>
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           {/* Left side */}
