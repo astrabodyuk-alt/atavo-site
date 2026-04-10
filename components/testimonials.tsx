@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import Reveal from "@/components/reveal";
 
 const testimonials = [
   {
@@ -45,6 +46,7 @@ export default function Testimonials() {
       </h2>
 
       {/* Cards */}
+      <Reveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
         {testimonials.map((t) => (
           <div
@@ -62,6 +64,7 @@ export default function Testimonials() {
           </div>
         ))}
       </div>
+      </Reveal>
 
       {/* Social proof line */}
       <p className="mt-12 text-center text-muted text-sm">

@@ -1,4 +1,5 @@
 import { CheckCircle } from "lucide-react";
+import Reveal from "@/components/reveal";
 
 const features = [
   "Custom design (not a template)",
@@ -24,6 +25,7 @@ export default function Pricing() {
       </h2>
 
       {/* Pricing card */}
+      <Reveal>
       <div
         className="mt-16 max-w-lg mx-auto bg-surface rounded-3xl p-10 border border-green/30"
         style={{ boxShadow: "0 0 60px rgba(0,245,160,0.06)" }}
@@ -76,6 +78,7 @@ export default function Pricing() {
           </a>
         </div>
       </div>
+      </Reveal>
 
       {/* Below card */}
       <p className="mt-4 text-center text-muted text-xs">

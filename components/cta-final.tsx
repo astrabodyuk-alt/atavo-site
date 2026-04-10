@@ -1,6 +1,9 @@
+import Reveal from "@/components/reveal";
+
 export default function CTAFinal() {
   return (
     <section id="contact" className="bg-surface py-32 px-6 md:px-12 text-center">
+      <Reveal>
       {/* Title */}
       <h2 className="font-heading font-black text-5xl md:text-7xl text-white leading-none">
         Ready to get
@@ -39,6 +42,7 @@ export default function CTAFinal() {
           hello@atavo.co.uk
         </a>
       </p>
+      </Reveal>
     </section>
   );
 }

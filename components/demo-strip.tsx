@@ -1,3 +1,5 @@
+import Reveal from "@/components/reveal";
+
 const tags = ["Restaurant", "Portsmouth", "7 days", "£699"];
 
 export default function DemoStrip() {
@@ -14,6 +16,7 @@ export default function DemoStrip() {
       </h2>
 
       {/* Project card */}
+      <Reveal>
       <div className="mt-16 bg-bg border border-border-dark rounded-2xl overflow-hidden">
         {/* Preview area */}
         <div className="h-64 md:h-80 bg-surface overflow-hidden relative">
@@ -62,6 +65,7 @@ export default function DemoStrip() {
           </a>
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

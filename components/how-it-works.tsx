@@ -1,4 +1,5 @@
 import { FileText, Laptop, Rocket, CheckCircle } from "lucide-react";
+import Reveal from "@/components/reveal";
 
 const steps = [
   {
@@ -41,6 +42,7 @@ export default function HowItWorks() {
       </h2>
 
       {/* Steps */}
+      <Reveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
         {steps.map((step) => {
           const Icon = step.icon;
@@ -68,6 +70,7 @@ export default function HowItWorks() {
           );
         })}
       </div>
+      </Reveal>
 
       {/* Guarantee line */}
       <p className="mt-12 flex items-center justify-center gap-2 text-muted text-sm">

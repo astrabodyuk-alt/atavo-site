@@ -1,3 +1,4 @@
+import Reveal from "@/components/reveal";
 import {
   Accordion,
   AccordionContent,
@@ -47,6 +48,7 @@ export default function FAQ() {
       </h2>
 
       {/* Accordion */}
+      <Reveal>
       <div className="mt-16 max-w-2xl mx-auto">
         <Accordion multiple={false} className="w-full">
           {faqs.map((faq, i) => (
@@ -65,6 +67,7 @@ export default function FAQ() {
           ))}
         </Accordion>
       </div>
+      </Reveal>
     </section>
   );
 }

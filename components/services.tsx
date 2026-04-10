@@ -1,4 +1,5 @@
 import { Globe, Code2, Zap, Check } from "lucide-react";
+import Reveal from "@/components/reveal";
 
 const cards = [
   {
@@ -84,6 +85,7 @@ export default function Services() {
       </h2>
 
       {/* Cards grid */}
+      <Reveal>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
         {cards.map((card) => {
           const Icon = card.icon;
@@ -126,6 +128,7 @@ export default function Services() {
           );
         })}
       </div>
+      </Reveal>
     </section>
   );
 }
