@@ -1,50 +1,66 @@
+'use client'
+import { ChevronDown } from "lucide-react";
+
 export default function Hero() {
+  const scrollToNext = () => {
+    const next = document.getElementById("work");
+    if (next) next.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="min-h-screen pt-16 bg-white flex flex-col items-center justify-center text-center px-6 md:px-12 py-24">
+    <section className="bg-white text-center flex flex-col items-center justify-center min-h-screen pt-16 px-6">
       {/* Headline */}
-      <h1 className="font-heading font-black text-5xl md:text-7xl lg:text-8xl text-black leading-none tracking-tight max-w-5xl">
-        We build websites that get you{" "}
-        <span className="text-[#00c47a]">more customers.</span>
+      <h1 className="font-heading font-black text-6xl md:text-8xl text-black leading-none tracking-tight">
+        Your competitors
+        <br />
+        are online.
+        <br />
+        <span className="text-[#00c47a]">Are you?</span>
       </h1>
 
       {/* Subheadline */}
-      <p className="mt-6 text-[#6b6b6b] text-lg md:text-xl text-center max-w-xl mx-auto">
-        Premium web design for UK restaurants and local businesses.
+      <p className="mt-6 max-w-lg mx-auto text-center text-[#6b6b6b] text-lg md:text-xl">
+        We build websites and business tools that get you more customers.
         <br />
-        From £699. Live in 7 days.
+        Custom-built. Any industry. From £699.
       </p>
 
       {/* CTA */}
       <a
         href="#pricing"
-        className="mt-10 bg-black text-white px-10 py-5 rounded-full text-lg font-semibold hover:bg-[#00c47a] hover:text-black transition"
+        className="mt-10 bg-black text-white px-10 py-5 rounded-full text-lg font-semibold hover:bg-[#00c47a] hover:text-black transition-all duration-300 cursor-pointer"
       >
-        Get your free audit 👋
+        Let&apos;s build yours →
       </a>
 
       {/* Scroll arrow */}
-      <div className="mt-16 flex flex-col items-center gap-2">
-        <div className="w-10 h-10 rounded-full border border-[#e8e8e8] flex items-center justify-center text-[#6b6b6b] text-lg animate-bounce">
-          ↓
-        </div>
-      </div>
+      <button
+        onClick={scrollToNext}
+        aria-label="Scroll to next section"
+        className="mt-16 w-12 h-12 rounded-full border-2 border-black flex items-center justify-center mx-auto hover:bg-black hover:text-white transition cursor-pointer group"
+      >
+        <ChevronDown className="text-black group-hover:text-white w-5 h-5 transition-colors" />
+      </button>
 
       {/* Stats strip */}
-      <div className="flex flex-wrap justify-center gap-12 md:gap-20 mt-16">
+      <div className="mt-20 flex flex-wrap justify-center gap-12">
         {[
-          { number: "£699", label: "Launch price" },
-          { number: "7 days", label: "Delivery" },
-          { number: "90 days", label: "Maintenance" },
+          { number: "£699", label: "Websites from" },
+          { number: "7 days", label: "Average delivery" },
+          { number: "All industries", label: "Restaurants to SaaS" },
           { number: "3×", label: "Pay with Klarna" },
         ].map((stat) => (
-          <div key={stat.label} className="text-center">
-            <div className="text-black font-heading font-bold text-2xl">
+          <div key={stat.label} className="flex flex-col items-center">
+            <span className="font-heading font-black text-3xl text-black">
               {stat.number}
-            </div>
-            <div className="text-[#6b6b6b] text-sm mt-1">{stat.label}</div>
+            </span>
+            <span className="text-[#6b6b6b] text-sm mt-1">{stat.label}</span>
           </div>
         ))}
       </div>
+
+      {/* Separator */}
+      <div className="w-16 bg-[#e8e8e8] h-px mx-auto mt-20" />
     </section>
   );
 }
