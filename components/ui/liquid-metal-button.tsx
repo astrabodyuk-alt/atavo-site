@@ -61,7 +61,7 @@ export default function LiquidMetalButton({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={clsx(
-        "relative overflow-hidden rounded-full font-semibold text-white transition-transform duration-200 active:scale-95 cursor-pointer",
+        "relative overflow-hidden rounded-full font-semibold text-white bg-black transition-transform duration-200 active:scale-95 cursor-pointer",
         viewMode === "icon"
           ? "w-12 h-12 flex items-center justify-center"
           : "px-10 py-5 text-lg",

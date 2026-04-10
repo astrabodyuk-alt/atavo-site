@@ -29,7 +29,7 @@ export default function Hero() {
       {/* CTA */}
       <div className="mt-10">
         <LiquidMetalButton
-          label="Let's build yours"
+          label="Let's build yours →"
           onClick={() => {
             document.getElementById("audit-form")?.scrollIntoView({ behavior: "smooth" });
           }}
