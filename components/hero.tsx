@@ -1,1 +1,1 @@
-export { GlowyWavesHero as default } from "@/components/ui/glowy-waves-hero";
+export { default } from "@/components/ui/shader-hero";
