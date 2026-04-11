@@ -1,5 +1,5 @@
 'use client'
-import { TestimonialsMinimal } from "@/components/ui/testimonials-minimal";
+import { TestimonialsMinimal } from "@/components/ui/minimal-testimonial"
 
 export default function Testimonials() {
   return (
@@ -8,5 +8,5 @@ export default function Testimonials() {
       <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 tracking-tight">What our clients say.</h2>
       <TestimonialsMinimal />
     </section>
-  );
+  )
 }
