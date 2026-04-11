@@ -16,7 +16,7 @@ const items: AccordionItem[] = [
     number: "01",
     title: "Business Deep-Dive",
     content:
-      "We take the time to understand your goals, your customers, and your vision. No guesswork — every decision is backed by real insight into what makes your business unique.",
+      "We take the time to understand your goals, your customers, and your vision. No guesswork. Every decision is backed by real insight into what makes your business unique.",
   },
   {
     id: "competitor",
@@ -30,7 +30,7 @@ const items: AccordionItem[] = [
     number: "03",
     title: "Strategic Positioning",
     content:
-      "We find the gaps where you can dominate online. You receive a full audit report worth £299 with clear, actionable recommendations — included free with every project.",
+      "We find the gaps where you can dominate online. You receive a full audit report worth £299 with clear, actionable recommendations, included free with every project.",
   },
 ]
 

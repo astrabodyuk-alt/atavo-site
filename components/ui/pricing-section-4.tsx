@@ -37,7 +37,7 @@ const plans = [
     popular: true,
     includes: [
       "Everything in Audit, plus:",
-      "Custom design — no templates",
+      "Custom design. No templates.",
       "Mobile responsive",
       "SEO foundation",
       "Contact form + Google Maps",

@@ -15,8 +15,7 @@ export default function DemoStrip() {
 
       {/* Subtext */}
       <p className="mt-4 text-[#6b6b6b] text-lg max-w-xl">
-        This animation was built for a fast food brand. We do the same for any
-        business — restaurant, clinic, agency, shop.
+        This animation was built for a fast food brand. We do the same for any business. Restaurant, clinic, agency, shop.
       </p>
 
       {/* Video showcase */}

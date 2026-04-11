@@ -23,7 +23,7 @@ const faqs = [
   {
     question: "Can I pay in instalments?",
     answer:
-      "Yes. We offer 3× monthly payments via Klarna — so you can start for £233 today.",
+      "Yes. We offer 3× monthly payments via Klarna, so you can start for £233 today.",
   },
   {
     question: "What happens after launch?",
@@ -33,7 +33,7 @@ const faqs = [
   {
     question: "Do you work with any industry?",
     answer:
-      "Yes. Restaurants, clinics, agencies, personal trainers, barbershops, e-commerce — we build custom solutions for any business in the UK.",
+      "Yes. Restaurants, clinics, agencies, personal trainers, barbershops, e-commerce. We build custom solutions for any business in the UK.",
   },
 ];
 

@@ -16,21 +16,21 @@ const items: AccordionItem[] = [
     number: "01",
     title: "Professional Websites",
     content:
-      "A fast, beautiful website that works on every device. Custom-designed to convert visitors into customers — no templates, no shortcuts. SEO foundation, contact forms, Google Maps integration, and 90 days free maintenance included. Built for restaurants, salons, trades, clinics, agencies — any industry.",
+      "A fast, beautiful website that works on every device. Custom-designed to convert visitors into customers. No templates, no shortcuts. SEO foundation, contact forms, Google Maps integration, and 90 days free maintenance included. Built for restaurants, salons, trades, clinics, agencies. Any industry.",
   },
   {
     id: "saas",
     number: "02",
     title: "SaaS & Business Tools",
     content:
-      "Custom-built software tailored to your exact workflow. Lead tracking, booking and scheduling systems, client portals, admin dashboards — everything you need to manage your business in one place. No off-the-shelf software, no compromises.",
+      "Custom-built software tailored to your exact workflow. Lead tracking, booking and scheduling systems, client portals, admin dashboards. Everything you need to manage your business in one place. No off-the-shelf software, no compromises.",
   },
   {
     id: "automation",
     number: "03",
     title: "Business Automation",
     content:
-      "Stop doing repetitive tasks manually. We set up automated email sequences, AI-powered workflows, and lead nurturing systems that run on autopilot. CRM integration, Make.com and n8n setup included — so you can focus on growth while your business runs itself.",
+      "Stop doing repetitive tasks manually. We set up automated email sequences, AI-powered workflows, and lead nurturing systems that run on autopilot. CRM integration, Make.com and n8n setup included, so you can focus on growth while your business runs itself.",
   },
 ]
 
