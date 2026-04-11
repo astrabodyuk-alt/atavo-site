@@ -73,7 +73,7 @@ Import Google Fonts :
 - Fond blanc dominant, vert #00c47a comme seul accent couleur
 - CTAs noirs (bg-black) avec hover vert — sauf CTA Final section (bg-black)
 - Whitespace agressif entre sections
-- Pas de WebGL, pas de marquee, pas d'animations complexes
+- Pour les components custom Atavo : fade-in scroll reveal. Pour les components 21st.dev : garder TOUS les effets d'origine (WebGL, marquee, shaders, GSAP, etc.)
 - Scroll reveal : fade-in + slide-up (700ms, IntersectionObserver)
 - Lazy load images avec placeholder couleur
 
@@ -279,8 +279,8 @@ It's what separates Atavo from cheap template agencies.
 ## 15. RÈGLES DE DÉVELOPPEMENT
 
 1. **Mobile first.** Tout doit être parfait sur iPhone 13 (390px) avant le desktop.
-2. **Pas d'animations complexes.** Fade-in scroll reveal max. Pas de WebGL, pas de marquee.
-3. **Performance > Effets.** Lighthouse score > 90 obligatoire.
+2. **Components 21st.dev : RESPECTER À LA LETTRE.** Quand un component est fourni depuis 21st.dev, l'intégrer EXACTEMENT tel quel — garder TOUTES les animations, effets, glows, shaders, sparkles, parallax, marquee, GSAP, framer-motion, etc. Ne JAMAIS simplifier, retirer ou modifier les effets visuels. Seul le contenu texte et les couleurs de marque doivent être adaptés.
+3. **Performance > Effets SAUF components 21st.dev.** Lighthouse > 90 est un objectif pour le code custom, mais ne doit JAMAIS justifier la suppression d'effets provenant de components 21st.dev fournis par le client.
 4. **Un seul accent couleur visible à la fois.** Vert #00f5a0 dominant, bleu #00b4d8 pour les hover states uniquement.
 5. **Typo oversized sur hero.** `font-size: clamp(2.5rem, 7vw, 7rem)` minimum.
 6. **Sections séparées par whitespace.** `py-24 md:py-32` entre chaque section.
