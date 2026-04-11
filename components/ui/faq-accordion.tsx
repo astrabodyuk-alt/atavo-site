@@ -133,7 +133,7 @@ export function AccordionComponent() {
         <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body mb-4">
           FAQ
         </p>
-        <h2 className="font-heading font-black text-4xl md:text-5xl text-black leading-tight">
+        <h2 className="font-heading font-bold text-2xl md:text-3xl text-black leading-tight">
           Got questions?{" "}
           <span className="text-[#00c47a]">We&apos;ve got answers.</span>
         </h2>

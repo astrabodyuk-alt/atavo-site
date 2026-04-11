@@ -9,7 +9,7 @@ export default function DemoStrip() {
       </p>
 
       {/* Title */}
-      <h2 className="mt-4 font-heading font-black text-4xl md:text-5xl text-black max-w-2xl leading-tight">
+      <h2 className="mt-4 font-heading font-bold text-3xl md:text-4xl text-black max-w-2xl leading-tight">
         We create the wow effect your competitors don&apos;t have.
       </h2>
 

@@ -18,7 +18,7 @@ export default function USPAudit() {
               WHAT MAKES US DIFFERENT
             </p>
 
-            <h2 className="mt-4 font-heading font-black text-4xl md:text-6xl text-white leading-tight">
+            <h2 className="mt-4 font-heading font-bold text-3xl md:text-4xl text-white leading-tight">
               Every project starts with
               <br />
               a free £299 audit.

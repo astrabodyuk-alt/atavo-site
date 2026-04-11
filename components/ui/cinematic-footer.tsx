@@ -176,7 +176,7 @@ export function CinematicFooter() {
         {/* Heading */}
         <h2
           ref={headingRef}
-          className="font-heading font-black text-4xl md:text-6xl lg:text-7xl leading-tight max-w-3xl mb-12 opacity-0"
+          className="font-heading font-bold text-4xl md:text-5xl leading-tight max-w-3xl mb-12 opacity-0"
           style={{
             textShadow: "0 0 80px rgba(0,196,122,0.25), 0 0 160px rgba(0,196,122,0.1)",
           }}

@@ -20,7 +20,7 @@ export default function Pricing() {
       </p>
 
       {/* Title */}
-      <h2 className="mt-4 font-heading font-black text-4xl md:text-5xl text-black">
+      <h2 className="mt-4 font-heading font-bold text-3xl md:text-4xl text-black">
         One price. No surprises.
       </h2>
 
@@ -33,7 +33,7 @@ export default function Pricing() {
           </span>
 
           {/* Price */}
-          <p className="font-heading font-black text-8xl text-black leading-none mt-4">
+          <p className="font-heading font-black text-6xl text-black leading-none mt-4">
             £699
           </p>
           <p className="text-[#6b6b6b] text-sm mt-2">one-time payment</p>

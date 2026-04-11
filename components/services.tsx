@@ -77,7 +77,7 @@ export default function Services() {
       </p>
 
       {/* Title */}
-      <h2 className="mt-4 font-heading font-black text-4xl md:text-5xl text-black leading-tight">
+      <h2 className="mt-4 font-heading font-bold text-3xl md:text-4xl text-black leading-tight">
         Built for your business.
         <br />
         Not copied from a template.
