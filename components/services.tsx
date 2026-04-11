@@ -1,139 +1,160 @@
-import { Globe, LayoutDashboard, Zap, Check } from "lucide-react";
+'use client'
+
+import * as RadixAccordion from "@radix-ui/react-accordion";
+import { Globe, LayoutGrid, Zap, Check, Plus, Minus } from "lucide-react";
+import { useState } from "react";
 import Reveal from "@/components/reveal";
 
-const cards = [
+const services = [
   {
-    featured: true,
-    badge: "Most popular",
+    value: "websites",
     icon: Globe,
-    title: "Professional Website",
-    price: "From £699",
-    description:
-      "A fast, beautiful website that works on every device. Restaurants, salons, trades, clinics — any industry.",
-    features: [
-      "Custom design — no templates",
-      "Mobile responsive",
-      "SEO foundation",
-      "90 days free maintenance",
-      "Full code ownership",
-      "Free business audit included",
+    title: "Professional Websites",
+    bullets: [
+      "Custom-designed websites that convert visitors into customers",
+      "Mobile responsive on every device",
+      "SEO foundation built in from day one",
+      "90 days free maintenance included",
+      "Restaurants, salons, trades, clinics, agencies — any industry",
+      "Free business audit included with every project",
     ],
-    cta: "Start for £699 →",
-    ctaClass:
-      "bg-black text-white px-6 py-3 rounded-full w-full text-center font-semibold hover:bg-[#00c47a] hover:text-black transition mt-auto block",
-    cardClass:
-      "bg-[#f7f7f7] rounded-2xl p-8 border-2 border-black flex flex-col gap-4",
   },
   {
-    featured: false,
-    badge: null,
-    icon: LayoutDashboard,
+    value: "saas",
+    icon: LayoutGrid,
     title: "SaaS & Business Tools",
-    price: "From £1,499",
-    description:
-      "Lead tracking, booking systems, client portals, custom dashboards. Built around your exact workflow.",
-    features: [
-      "100% custom built",
-      "Lead & client management",
-      "Booking & scheduling",
-      "Admin dashboard",
-      "Free business audit included",
+    bullets: [
+      "Lead tracking & client management systems",
+      "Booking & scheduling platforms",
+      "Admin dashboards tailored to your workflow",
+      "Client portals for seamless communication",
+      "100% custom built — no off-the-shelf software",
+      "Free business audit included with every project",
     ],
-    cta: "Get a quote →",
-    ctaClass:
-      "border-2 border-black text-black px-6 py-3 rounded-full w-full text-center font-semibold hover:bg-black hover:text-white transition mt-auto block",
-    cardClass:
-      "bg-[#f7f7f7] rounded-2xl p-8 border border-[#e8e8e8] flex flex-col gap-4",
   },
   {
-    featured: false,
-    badge: null,
+    value: "automation",
     icon: Zap,
     title: "Business Automation",
-    price: "From £299/mo",
-    description:
-      "Stop doing repetitive tasks manually. AI-powered workflows that save hours every week so you can focus on growth.",
-    features: [
-      "Email sequences & CRM",
-      "AI-powered workflows",
-      "Lead nurturing automation",
-      "Make.com / n8n setup",
-      "Free business audit included",
+    bullets: [
+      "Automated email sequences & CRM integration",
+      "AI-powered workflows that save hours every week",
+      "Lead nurturing automation on autopilot",
+      "Make.com / n8n setup and management",
+      "Stop doing repetitive tasks manually — focus on growth",
+      "Free business audit included with every project",
     ],
-    cta: "Learn more →",
-    ctaClass:
-      "border-2 border-black text-black px-6 py-3 rounded-full w-full text-center font-semibold hover:bg-black hover:text-white transition mt-auto block",
-    cardClass:
-      "bg-[#f7f7f7] rounded-2xl p-8 border border-[#e8e8e8] flex flex-col gap-4",
   },
 ];
 
 export default function Services() {
+  const [openItem, setOpenItem] = useState<string>("");
+
   return (
     <section id="services" className="bg-white py-24 px-6 md:px-12">
-      {/* Label */}
-      <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body">
-        SERVICES
-      </p>
+      <div className="max-w-3xl mx-auto">
+        {/* Label */}
+        <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body">
+          SERVICES
+        </p>
 
-      {/* Title */}
-      <h2 className="mt-4 font-heading font-bold text-3xl md:text-4xl text-black leading-tight">
-        Built for your business.
-        <br />
-        Not copied from a template.
-      </h2>
+        {/* Title */}
+        <h2 className="mt-4 font-heading font-bold text-3xl md:text-4xl text-black leading-tight">
+          Built for your business.
+          <br />
+          Not copied from a template.
+        </h2>
 
-      {/* Subtitle */}
-      <p className="mt-4 max-w-xl text-[#6b6b6b] text-lg">
-        Every project starts with a deep understanding of your business. Then
-        we build exactly what you need — nothing more, nothing less.
-      </p>
+        {/* Subtitle */}
+        <p className="mt-4 max-w-xl text-[#6b6b6b] text-lg">
+          Every project starts with a deep understanding of your business. Then
+          we build exactly what you need — nothing more, nothing less.
+        </p>
 
-      {/* Cards */}
-      <Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-          {cards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <div key={card.title} className={card.cardClass}>
-                {card.badge && (
-                  <span className="bg-black text-white text-xs font-bold px-3 py-1 rounded-full w-fit">
-                    {card.badge}
-                  </span>
-                )}
+        {/* Accordion */}
+        <Reveal>
+          <RadixAccordion.Root
+            type="single"
+            collapsible
+            value={openItem}
+            onValueChange={(val) => setOpenItem(val)}
+            className="w-full mt-12 flex flex-col gap-3"
+          >
+            {services.map((service) => {
+              const Icon = service.icon;
+              const isOpen = openItem === service.value;
 
-                <Icon className="text-[#00c47a] w-8 h-8" />
+              return (
+                <RadixAccordion.Item
+                  key={service.value}
+                  value={service.value}
+                  className={`
+                    rounded-2xl border transition-all duration-200
+                    ${isOpen
+                      ? "border-[#00c47a]/40 bg-[#f0fdf8]"
+                      : "border-[#e8e8e8] bg-white hover:border-[#00c47a]/30"
+                    }
+                  `}
+                >
+                  <RadixAccordion.Header className="flex">
+                    <RadixAccordion.Trigger className="flex w-full items-center justify-between px-6 py-5 text-left focus-visible:outline-none group">
+                      {/* Icon + title */}
+                      <span className="flex items-center gap-4">
+                        <span className={`
+                          flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-200
+                          ${isOpen ? "bg-[#00c47a] text-white" : "bg-[#f7f7f7] text-[#00c47a] group-hover:bg-[#00c47a]/10"}
+                        `}>
+                          <Icon className="h-5 w-5" />
+                        </span>
+                        <span className={`
+                          font-heading font-bold text-xl leading-snug transition-colors duration-150
+                          ${isOpen ? "text-[#00c47a]" : "text-[#0d0d0d] group-hover:text-[#00c47a]"}
+                        `}>
+                          {service.title}
+                        </span>
+                      </span>
 
-                <div>
-                  <h3 className="text-black font-heading font-bold text-2xl">
-                    {card.title}
-                  </h3>
-                  <p className="text-black font-heading font-black text-4xl mt-2">
-                    {card.price}
-                  </p>
-                </div>
+                      {/* Plus / Minus toggle */}
+                      <span className={`
+                        ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-200
+                        ${isOpen ? "bg-[#00c47a] text-white" : "bg-[#f7f7f7] text-[#6b6b6b] group-hover:bg-[#00c47a]/10 group-hover:text-[#00c47a]"}
+                      `}>
+                        {isOpen
+                          ? <Minus className="h-3.5 w-3.5" />
+                          : <Plus className="h-3.5 w-3.5" />
+                        }
+                      </span>
+                    </RadixAccordion.Trigger>
+                  </RadixAccordion.Header>
 
-                <p className="text-[#6b6b6b] text-sm">{card.description}</p>
+                  <RadixAccordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                    <ul className="px-6 pb-6 pt-1 space-y-3">
+                      {service.bullets.map((bullet) => (
+                        <li key={bullet} className="flex items-start gap-3">
+                          <Check className="text-[#00c47a] w-4 h-4 mt-0.5 shrink-0" />
+                          <span className="text-[#6b6b6b] text-base leading-relaxed">
+                            {bullet}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </RadixAccordion.Content>
+                </RadixAccordion.Item>
+              );
+            })}
+          </RadixAccordion.Root>
 
-                <ul className="space-y-2 mt-4">
-                  {card.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-2">
-                      <Check className="text-[#00c47a] w-4 h-4 shrink-0" />
-                      <span className="text-[#0d0d0d] text-sm">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-auto pt-6">
-                  <a href="#audit-form" className={card.ctaClass}>
-                    {card.cta}
-                  </a>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </Reveal>
+          {/* CTA */}
+          <div className="mt-10 flex justify-center md:justify-start">
+            <a
+              href="#audit-form"
+              className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-[#00c47a] hover:text-black transition-colors duration-200"
+            >
+              Start with a free audit →
+            </a>
+          </div>
+        </Reveal>
+      </div>
     </section>
   );
 }
