@@ -1,133 +1,324 @@
 'use client'
-import { useEffect, useRef, useState } from "react"
-import { MeshGradient, PulsingBorder } from "@paper-design/shaders-react"
-import { motion } from "framer-motion"
+import { motion, type Variants } from "framer-motion";
+import { ArrowRight, Sparkles } from "lucide-react";
+import { useEffect, useRef } from "react";
+
+type Point = { x: number; y: number };
+
+interface WaveConfig {
+  offset: number;
+  amplitude: number;
+  frequency: number;
+  color: string;
+  opacity: number;
+}
+
+const highlightPills = [
+  "Free Business Audit",
+  "Built in 7 Days",
+  "From £699",
+] as const;
+
+const heroStats: { label: string; value: string }[] = [
+  { label: "Starting from", value: "£699" },
+  { label: "Avg. delivery", value: "7 days" },
+  { label: "Free support", value: "90 days" },
+];
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, staggerChildren: 0.12 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
+
+const statsVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.6, ease: "easeOut", staggerChildren: 0.08 },
+  },
+};
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [isActive, setIsActive] = useState(false)
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const mouseRef = useRef<Point>({ x: 0, y: 0 });
+  const targetMouseRef = useRef<Point>({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseEnter = () => setIsActive(true)
-    const handleMouseLeave = () => setIsActive(false)
-    const container = containerRef.current
-    if (container) {
-      container.addEventListener("mouseenter", handleMouseEnter)
-      container.addEventListener("mouseleave", handleMouseLeave)
-    }
-    return () => {
-      if (container) {
-        container.removeEventListener("mouseenter", handleMouseEnter)
-        container.removeEventListener("mouseleave", handleMouseLeave)
+    const canvas = canvasRef.current;
+    if (!canvas) return undefined;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return undefined;
+
+    let animationId: number;
+    let time = 0;
+
+    const computeThemeColors = () => {
+      const resolveColor = (variables: string[], alpha = 1) => {
+        const tempEl = document.createElement("div");
+        tempEl.style.position = "absolute";
+        tempEl.style.visibility = "hidden";
+        tempEl.style.width = "1px";
+        tempEl.style.height = "1px";
+        document.body.appendChild(tempEl);
+
+        let color = `rgba(255, 255, 255, ${alpha})`;
+
+        for (const variable of variables) {
+          tempEl.style.backgroundColor = `var(${variable})`;
+          const computedColor = getComputedStyle(tempEl).backgroundColor;
+
+          if (computedColor && computedColor !== "rgba(0, 0, 0, 0)") {
+            if (alpha < 1) {
+              const rgbMatch = computedColor.match(
+                /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)/
+              );
+              if (rgbMatch) {
+                color = `rgba(${rgbMatch[1]}, ${rgbMatch[2]}, ${rgbMatch[3]}, ${alpha})`;
+              } else {
+                color = computedColor;
+              }
+            } else {
+              color = computedColor;
+            }
+            break;
+          }
+        }
+
+        document.body.removeChild(tempEl);
+        return color;
+      };
+
+      return {
+        backgroundTop: resolveColor(["--background"], 1),
+        backgroundBottom: resolveColor(["--muted", "--background"], 0.95),
+        wavePalette: [
+          {
+            offset: 0,
+            amplitude: 70,
+            frequency: 0.003,
+            color: resolveColor(["--primary"], 0.8),
+            opacity: 0.45,
+          },
+          {
+            offset: Math.PI / 2,
+            amplitude: 90,
+            frequency: 0.0026,
+            color: resolveColor(["--accent", "--primary"], 0.7),
+            opacity: 0.35,
+          },
+          {
+            offset: Math.PI,
+            amplitude: 60,
+            frequency: 0.0034,
+            color: resolveColor(["--secondary", "--foreground"], 0.65),
+            opacity: 0.3,
+          },
+          {
+            offset: Math.PI * 1.5,
+            amplitude: 80,
+            frequency: 0.0022,
+            color: resolveColor(["--primary-foreground", "--foreground"], 0.25),
+            opacity: 0.25,
+          },
+          {
+            offset: Math.PI * 2,
+            amplitude: 55,
+            frequency: 0.004,
+            color: resolveColor(["--foreground"], 0.2),
+            opacity: 0.2,
+          },
+        ] satisfies WaveConfig[],
+      };
+    };
+
+    let themeColors = computeThemeColors();
+
+    const handleThemeMutation = () => {
+      themeColors = computeThemeColors();
+    };
+
+    const observer = new MutationObserver(handleThemeMutation);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class", "data-theme"],
+    });
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const mouseInfluence = prefersReducedMotion ? 10 : 70;
+    const influenceRadius = prefersReducedMotion ? 160 : 320;
+    const smoothing = prefersReducedMotion ? 0.04 : 0.1;
+
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    const recenterMouse = () => {
+      const centerPoint = { x: canvas.width / 2, y: canvas.height / 2 };
+      mouseRef.current = centerPoint;
+      targetMouseRef.current = centerPoint;
+    };
+
+    const handleResize = () => {
+      resizeCanvas();
+      recenterMouse();
+    };
+
+    const handleMouseMove = (event: MouseEvent) => {
+      targetMouseRef.current = { x: event.clientX, y: event.clientY };
+    };
+
+    const handleMouseLeave = () => {
+      recenterMouse();
+    };
+
+    resizeCanvas();
+    recenterMouse();
+
+    window.addEventListener("resize", handleResize);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
+
+    const drawWave = (wave: WaveConfig) => {
+      ctx.save();
+      ctx.beginPath();
+
+      for (let x = 0; x <= canvas.width; x += 4) {
+        const dx = x - mouseRef.current.x;
+        const dy = canvas.height / 2 - mouseRef.current.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const influence = Math.max(0, 1 - distance / influenceRadius);
+        const mouseEffect =
+          influence *
+          mouseInfluence *
+          Math.sin(time * 0.001 + x * 0.01 + wave.offset);
+
+        const y =
+          canvas.height / 2 +
+          Math.sin(x * wave.frequency + time * 0.002 + wave.offset) *
+            wave.amplitude +
+          Math.sin(x * wave.frequency * 0.4 + time * 0.003) *
+            (wave.amplitude * 0.45) +
+          mouseEffect;
+
+        if (x === 0) {
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
       }
-    }
-  }, [])
+
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = wave.color;
+      ctx.globalAlpha = wave.opacity;
+      ctx.shadowBlur = 35;
+      ctx.shadowColor = wave.color;
+      ctx.stroke();
+
+      ctx.restore();
+    };
+
+    const animate = () => {
+      time += 1;
+
+      mouseRef.current.x +=
+        (targetMouseRef.current.x - mouseRef.current.x) * smoothing;
+      mouseRef.current.y +=
+        (targetMouseRef.current.y - mouseRef.current.y) * smoothing;
+
+      const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, themeColors.backgroundTop);
+      gradient.addColorStop(1, themeColors.backgroundBottom);
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.globalAlpha = 1;
+      ctx.shadowBlur = 0;
+
+      themeColors.wavePalette.forEach(drawWave);
+
+      animationId = window.requestAnimationFrame(animate);
+    };
+
+    animationId = window.requestAnimationFrame(animate);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+      cancelAnimationFrame(animationId);
+      observer.disconnect();
+    };
+  }, []);
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-black relative overflow-hidden">
-      {/* SVG filters */}
-      <svg className="absolute inset-0 w-0 h-0">
-        <defs>
-          <filter id="glass-effect" x="-50%" y="-50%" width="200%" height="200%">
-            <feTurbulence baseFrequency="0.005" numOctaves="1" result="noise" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="0.3" />
-            <feColorMatrix
-              type="matrix"
-              values="1 0 0 0 0.02
-                      0 1 0 0 0.02
-                      0 0 1 0 0.05
-                      0 0 0 0.9 0"
-              result="tint"
-            />
-          </filter>
-          <filter id="gooey-filter" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-            <feColorMatrix
-              in="blur"
-              mode="matrix"
-              values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-              result="gooey"
-            />
-            <feComposite in="SourceGraphic" in2="gooey" operator="atop" />
-          </filter>
-          <filter id="text-glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-          <linearGradient id="hero-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ffffff" />
-            <stop offset="40%" stopColor="#00c47a" />
-            <stop offset="70%" stopColor="#00a366" />
-            <stop offset="100%" stopColor="#ffffff" />
-          </linearGradient>
-        </defs>
-      </svg>
-
-      {/* Shader layers */}
-      <MeshGradient
-        className="absolute inset-0 w-full h-full"
-        colors={["#000000", "#00c47a", "#00a366", "#003d2b", "#0d0d0d"]}
-        speed={0.3}
-      />
-      <MeshGradient
-        className="absolute inset-0 w-full h-full opacity-40"
-        colors={["#000000", "#ffffff", "#00c47a", "#00a366"]}
-        speed={0.2}
+    <section
+      className="relative isolate flex min-h-screen w-full items-center justify-center overflow-hidden bg-background"
+      role="region"
+      aria-label="Hero section"
+    >
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 h-full w-full"
+        aria-hidden="true"
       />
 
-      {/* Main content — bottom-left */}
-      <main className="absolute bottom-8 left-8 z-20 max-w-2xl">
-        <div className="text-left">
+      <div className="absolute inset-0 -z-10 pointer-events-none">
+        <div className="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-[140px] dark:bg-foreground/[0.06]" />
+        <div className="absolute bottom-0 right-0 h-[360px] w-[360px] rounded-full bg-foreground/[0.025] blur-[120px] dark:bg-foreground/[0.05]" />
+        <div className="absolute top-1/2 left-1/4 h-[400px] w-[400px] rounded-full bg-primary/[0.02] blur-[150px] dark:bg-primary/[0.05]" />
+      </div>
+
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-24 text-center md:px-8 lg:px-12">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="w-full"
+        >
           {/* Badge */}
           <motion.div
-            className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm mb-6 relative border border-white/10"
-            style={{ filter: "url(#glass-effect)" }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            variants={itemVariants}
+            className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-foreground/70 dark:border-border/60 dark:bg-background/70 dark:text-foreground/80"
           >
-            <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-[#00c47a]/40 to-transparent rounded-full" />
-            <span className="text-white/90 text-sm font-medium relative z-10 tracking-wide">
-              Web · SaaS · Automation
-            </span>
+            <Sparkles className="h-4 w-4 text-primary" aria-hidden="true" />
+            Web · SaaS · Automation
           </motion.div>
 
           {/* Headline */}
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            variants={itemVariants}
+            className="mb-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl lg:text-7xl"
           >
-            <span className="block font-black text-white drop-shadow-2xl">
-              Your competitors are online.
-            </span>
-            <motion.span
-              className="block font-black"
-              style={{
-                background: "linear-gradient(135deg, #00c47a 0%, #ffffff 50%, #00c47a 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                filter: "url(#text-glow)",
-                backgroundSize: "200% 200%",
-              }}
-              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-            >
+            Your competitors are online.{" "}
+            <span className="bg-gradient-to-r from-primary via-primary/60 to-foreground/80 bg-clip-text text-transparent">
               Are you?
-            </motion.span>
+            </span>
           </motion.h1>
 
           {/* Description */}
           <motion.p
-            className="text-lg font-light text-white/70 mb-8 leading-relaxed max-w-xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            variants={itemVariants}
+            className="mx-auto mb-10 max-w-3xl text-lg text-foreground/70 md:text-2xl"
           >
             We build websites and business tools that get you more customers.
             Custom-built. Any industry. From £699.
@@ -135,71 +326,64 @@ export default function Hero() {
 
           {/* CTAs */}
           <motion.div
-            className="flex items-center gap-4 flex-wrap"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 1.0 }}
+            variants={itemVariants}
+            className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
           >
-            <motion.a
+            <a
               href="#audit-form"
-              className="px-10 py-4 rounded-full bg-[#00c47a] text-black font-semibold text-sm transition-all duration-300 hover:brightness-110 cursor-pointer shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="group inline-flex items-center gap-2 rounded-full bg-[#00c47a] px-8 py-4 text-base font-semibold uppercase tracking-[0.2em] text-black transition-all hover:brightness-110"
             >
-              Let&apos;s build yours →
-            </motion.a>
-            <motion.a
+              Let&apos;s build yours
+              <ArrowRight
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                aria-hidden="true"
+              />
+            </a>
+            <a
               href="#demo"
-              className="px-10 py-4 rounded-full bg-transparent border-2 border-white/30 text-white font-medium text-sm transition-all duration-300 hover:bg-white/10 hover:border-[#00c47a]/60 hover:text-[#00c47a] cursor-pointer backdrop-blur-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              className="inline-flex rounded-full border border-border/40 bg-background/60 px-8 py-4 text-base text-foreground/80 backdrop-blur transition-all hover:border-border/60 hover:bg-background/70 dark:border-border/50 dark:bg-background/40 dark:text-foreground/70"
             >
               See our work
-            </motion.a>
+            </a>
           </motion.div>
-        </div>
-      </main>
 
-      {/* Pulsing border decoration — bottom right */}
-      <div className="absolute bottom-8 right-8 z-30">
-        <div className="relative w-20 h-20 flex items-center justify-center">
-          <PulsingBorder
-            colors={["#00c47a", "#00a366", "#ffffff", "#00c47a", "#003d2b", "#00e88a", "#ffffff"]}
-            colorBack="#00000000"
-            speed={1.5}
-            roundness={1}
-            thickness={0.1}
-            softness={0.2}
-            intensity={5}
-            spots={5}
-            spotSize={0.1}
-            pulse={0.1}
-            smoke={0.5}
-            smokeSize={4}
-            scale={0.65}
-            rotation={0}
-            frame={9161408.251009725}
-            style={{ width: "60px", height: "60px", borderRadius: "50%" }}
-          />
-          {/* Rotating text */}
-          <motion.svg
-            className="absolute inset-0 w-full h-full"
-            viewBox="0 0 100 100"
-            animate={{ rotate: 360 }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            style={{ transform: "scale(1.6)" }}
+          {/* Highlight pills */}
+          <motion.ul
+            variants={itemVariants}
+            className="mb-12 flex flex-wrap items-center justify-center gap-3 text-xs uppercase tracking-[0.2em] text-foreground/70 dark:text-foreground/80"
           >
-            <defs>
-              <path id="circle-path" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-            </defs>
-            <text className="text-sm fill-white/80 font-medium">
-              <textPath href="#circle-path" startOffset="0%">
-                Atavo Agency • Built in 7 Days • From £699 • Free Audit •
-              </textPath>
-            </text>
-          </motion.svg>
-        </div>
+            {highlightPills.map((pill) => (
+              <li
+                key={pill}
+                className="rounded-full border border-border/40 bg-background/60 px-4 py-2 backdrop-blur dark:border-border/60 dark:bg-background/70"
+              >
+                {pill}
+              </li>
+            ))}
+          </motion.ul>
+
+          {/* Stats grid */}
+          <motion.div
+            variants={statsVariants}
+            className="grid gap-4 rounded-2xl border border-border/30 bg-background/60 p-6 backdrop-blur-sm dark:border-border/60 dark:bg-background/70 sm:grid-cols-3"
+          >
+            {heroStats.map((stat) => (
+              <motion.div
+                key={stat.label}
+                variants={itemVariants}
+                className="space-y-1"
+              >
+                <div className="text-xs uppercase tracking-[0.3em] text-foreground/50 dark:text-foreground/60">
+                  {stat.label}
+                </div>
+                <div className="text-3xl font-semibold text-foreground">
+                  {stat.value}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }
