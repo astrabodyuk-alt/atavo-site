@@ -88,6 +88,7 @@ export default function PricingSection4() {
   const [canScrollRight, setCanScrollRight] = useState(true);
 
   // Center on featured card (index 1) on mount — mobile only
+  // Uses scrollLeft directly to avoid scrollIntoView causing page-level vertical scroll
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
@@ -95,7 +96,13 @@ export default function PricingSection4() {
     requestAnimationFrame(() => {
       const featured = container.querySelector<HTMLElement>('[data-featured="true"]');
       if (featured) {
-        featured.scrollIntoView({ behavior: "instant", inline: "center", block: "nearest" });
+        const containerRect = container.getBoundingClientRect();
+        const featuredRect = featured.getBoundingClientRect();
+        const offset =
+          featured.offsetLeft -
+          container.offsetLeft -
+          (containerRect.width - featuredRect.width) / 2;
+        container.scrollLeft = offset;
       }
     });
   }, []);

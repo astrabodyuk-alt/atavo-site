@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useEffect } from "react";
 import Nav from "@/components/nav";
 
 // Heavy components lazy-loaded client-side — framer-motion, GSAP, canvas, tsparticles
@@ -15,6 +16,10 @@ const FAQ = dynamic(() => import("@/components/faq"), { ssr: false });
 const Footer = dynamic(() => import("@/components/footer"), { ssr: false });
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Nav />
