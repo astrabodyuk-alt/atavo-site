@@ -89,7 +89,7 @@ export default function Services() {
                   key={service.value}
                   value={service.value}
                   className={`
-                    rounded-2xl border transition-all duration-200
+                    rounded-2xl border transition-colors duration-150
                     ${isOpen
                       ? "border-[#00c47a]/40 bg-[#f0fdf8]"
                       : "border-[#e8e8e8] bg-white hover:border-[#00c47a]/30"
@@ -101,7 +101,7 @@ export default function Services() {
                       {/* Icon + title */}
                       <span className="flex items-center gap-4">
                         <span className={`
-                          flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-200
+                          flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-150
                           ${isOpen ? "bg-[#00c47a] text-white" : "bg-[#f7f7f7] text-[#00c47a] group-hover:bg-[#00c47a]/10"}
                         `}>
                           <Icon className="h-5 w-5" />
@@ -116,7 +116,7 @@ export default function Services() {
 
                       {/* Plus / Minus toggle */}
                       <span className={`
-                        ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-200
+                        ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-150
                         ${isOpen ? "bg-[#00c47a] text-white" : "bg-[#f7f7f7] text-[#6b6b6b] group-hover:bg-[#00c47a]/10 group-hover:text-[#00c47a]"}
                       `}>
                         {isOpen
@@ -127,7 +127,7 @@ export default function Services() {
                     </RadixAccordion.Trigger>
                   </RadixAccordion.Header>
 
-                  <RadixAccordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                  <RadixAccordion.Content className="overflow-hidden duration-150 data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
                     <ul className="px-6 pb-6 pt-1 space-y-3">
                       {service.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-3">

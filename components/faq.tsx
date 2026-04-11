@@ -73,7 +73,7 @@ export default function FAQ() {
                   key={itemValue}
                   value={itemValue}
                   className={`
-                    rounded-2xl border transition-all duration-200
+                    rounded-2xl border transition-colors duration-150
                     ${isOpen
                       ? "border-[#00c47a]/40 bg-[#f0fdf8]"
                       : "border-[#e8e8e8] bg-white hover:border-[#00c47a]/30"
@@ -90,7 +90,7 @@ export default function FAQ() {
                       </span>
 
                       <span className={`
-                        ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-200
+                        ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-150
                         ${isOpen ? "bg-[#00c47a] text-white" : "bg-[#f7f7f7] text-[#6b6b6b] group-hover:bg-[#00c47a]/10 group-hover:text-[#00c47a]"}
                       `}>
                         {isOpen
@@ -101,7 +101,7 @@ export default function FAQ() {
                     </RadixAccordion.Trigger>
                   </RadixAccordion.Header>
 
-                  <RadixAccordion.Content className="overflow-hidden data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                  <RadixAccordion.Content className="overflow-hidden duration-150 data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
                     <p className="px-6 pb-6 text-[#6b6b6b] text-base leading-relaxed">
                       {faq.answer}
                     </p>
