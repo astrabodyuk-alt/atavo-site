@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 const testimonials = [
   {
     id: 1,
-    quote: "In 7 days I had a site that actually brings in customers. The audit alone was worth it.",
+    quote: "In 10 days I had a site that actually brings in customers. The audit alone was worth it.",
     author: "James T.",
     role: "Barbershop owner, London",
     initials: "JT",

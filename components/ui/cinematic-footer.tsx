@@ -13,7 +13,7 @@ const MARQUEE_ITEMS = [
   "✦",
   "Free Audit",
   "✦",
-  "Built in 7 Days",
+  "Built in 10 Days",
   "✦",
 ];
 

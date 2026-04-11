@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "How long does it take to build my site?",
     answer:
-      "7 days from brief sign-off. SaaS tools take 2–3 weeks depending on complexity.",
+      "10 days from brief sign-off. SaaS tools take 2–3 weeks depending on complexity.",
   },
   {
     question: "Do I need to provide anything?",

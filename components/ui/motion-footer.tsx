@@ -214,7 +214,7 @@ const MarqueeItem = () => (
     <span style={{ color: "rgba(0,196,122,0.6)" }}>✦</span>
     <span>Free Audit</span>{" "}
     <span style={{ color: "rgba(0,196,122,0.6)" }}>✦</span>
-    <span>Built in 7 Days</span>{" "}
+    <span>Built in 10 Days</span>{" "}
     <span style={{ color: "rgba(0,196,122,0.6)" }}>✦</span>
   </div>
 );

@@ -15,13 +15,13 @@ interface WaveConfig {
 
 const highlightPills = [
   "Free Business Audit",
-  "Built in 7 Days",
+  "Built in 10 Days",
   "From £699",
 ] as const;
 
 const heroStats: { label: string; value: string }[] = [
   { label: "Starting from", value: "£699" },
-  { label: "Avg. delivery", value: "7 days" },
+  { label: "Avg. delivery", value: "10 days" },
   { label: "Free support", value: "90 days" },
 ];
 

@@ -19,7 +19,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Atavo Agency — Web Design UK from £699",
   description:
-    "Premium web design for UK restaurants and local businesses. From £699. Live in 7 days.",
+    "Premium web design for UK restaurants and local businesses. From £699. Live in 10 days.",
 };
 
 export default function RootLayout({

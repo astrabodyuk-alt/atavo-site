@@ -5,7 +5,7 @@ import Image from "next/image"
 
 const testimonials = [
   {
-    quote: "In 7 days I had a site that actually brings in customers. The audit alone was worth it.",
+    quote: "In 10 days I had a site that actually brings in customers. The audit alone was worth it.",
     name: "James T.",
     role: "Barbershop owner, London",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60",

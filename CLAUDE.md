@@ -119,7 +119,7 @@ From £699.
 ### Stats strip sous le hero
 ```
 £699 — Launch price
-7 days — Average delivery
+10 days — Average delivery
 90 days — Free maintenance
 3× — Pay monthly with Klarna
 ```
@@ -132,7 +132,7 @@ From £699.
 **Titre :** Professional Website
 **Prix :** From £699
 **Inclus :** Custom design, any industry, mobile responsive, SEO-ready, 90 days maintenance
-**Délai :** 7 days
+**Délai :** 10 days
 
 ### Service 2 — SaaS / Business Tool
 **Titre :** SaaS & Business Tools
@@ -153,11 +153,11 @@ From £699.
 **Étape 1 — Brief (Day 1)**
 You fill a short form. We send you a questionnaire. 30 minutes max.
 
-**Étape 2 — Build (Days 2–6)**
-We design and build your site. You see daily progress updates.
+**Étape 2 — Build (Days 2–9)**
+We design and build your site. You see daily progress updates. (~7–8 days)
 
-**Étape 3 — Launch (Day 7)**
-Your site goes live. We handle hosting, domain, and setup.
+**Étape 3 — Launch (Day 10)**
+Your site goes live. We handle hosting, domain, and setup. (~10 business days total from first contact)
 
 ---
 

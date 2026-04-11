@@ -197,7 +197,7 @@ export default function ShaderHero() {
             </defs>
             <text className="text-sm fill-white/80 font-medium">
               <textPath href="#circle-path" startOffset="0%">
-                Atavo Agency • Built in 7 Days • From £699 • Free Audit •
+                Atavo Agency • Built in 10 Days • From £699 • Free Audit •
               </textPath>
             </text>
           </motion.svg>
