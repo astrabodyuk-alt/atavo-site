@@ -4,7 +4,6 @@ import USPAudit from "@/components/usp-audit";
 import AuditForm from "@/components/audit-form";
 import DemoStrip from "@/components/demo-strip";
 import Services from "@/components/services";
-import HowItWorks from "@/components/how-it-works";
 import Pricing from "@/components/pricing";
 import Testimonials from "@/components/testimonials";
 import FAQ from "@/components/faq";
@@ -20,7 +19,6 @@ export default function Home() {
         <AuditForm />
         <DemoStrip />
         <Services />
-        <HowItWorks />
         <Pricing />
         <Testimonials />
         <FAQ />

@@ -1,54 +1,42 @@
-'use client'
+"use client"
 
-import * as RadixAccordion from "@radix-ui/react-accordion";
-import { Globe, LayoutGrid, Zap, Check, Plus, Minus } from "lucide-react";
-import { useState } from "react";
-import Reveal from "@/components/reveal";
+import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
-const services = [
+interface AccordionItem {
+  id: string
+  number: string
+  title: string
+  content: string
+}
+
+const items: AccordionItem[] = [
   {
-    value: "websites",
-    icon: Globe,
+    id: "websites",
+    number: "01",
     title: "Professional Websites",
-    bullets: [
-      "Custom-designed websites that convert visitors into customers",
-      "Mobile responsive on every device",
-      "SEO foundation built in from day one",
-      "90 days free maintenance included",
-      "Restaurants, salons, trades, clinics, agencies — any industry",
-      "Free business audit included with every project",
-    ],
+    content:
+      "A fast, beautiful website that works on every device. Custom-designed to convert visitors into customers — no templates, no shortcuts. SEO foundation, contact forms, Google Maps integration, and 90 days free maintenance included. Built for restaurants, salons, trades, clinics, agencies — any industry.",
   },
   {
-    value: "saas",
-    icon: LayoutGrid,
+    id: "saas",
+    number: "02",
     title: "SaaS & Business Tools",
-    bullets: [
-      "Lead tracking & client management systems",
-      "Booking & scheduling platforms",
-      "Admin dashboards tailored to your workflow",
-      "Client portals for seamless communication",
-      "100% custom built — no off-the-shelf software",
-      "Free business audit included with every project",
-    ],
+    content:
+      "Custom-built software tailored to your exact workflow. Lead tracking, booking and scheduling systems, client portals, admin dashboards — everything you need to manage your business in one place. No off-the-shelf software, no compromises.",
   },
   {
-    value: "automation",
-    icon: Zap,
+    id: "automation",
+    number: "03",
     title: "Business Automation",
-    bullets: [
-      "Automated email sequences & CRM integration",
-      "AI-powered workflows that save hours every week",
-      "Lead nurturing automation on autopilot",
-      "Make.com / n8n setup and management",
-      "Stop doing repetitive tasks manually — focus on growth",
-      "Free business audit included with every project",
-    ],
+    content:
+      "Stop doing repetitive tasks manually. We set up automated email sequences, AI-powered workflows, and lead nurturing systems that run on autopilot. CRM integration, Make.com and n8n setup included — so you can focus on growth while your business runs itself.",
   },
-];
+]
 
 export default function Services() {
-  const [openItem, setOpenItem] = useState<string>("");
+  const [activeId, setActiveId] = useState<string | null>("websites")
+  const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   return (
     <section id="services" className="bg-white py-24 px-6 md:px-12">
@@ -58,103 +46,157 @@ export default function Services() {
           SERVICES
         </p>
 
-        {/* Title */}
-        <h2 className="mt-4 font-heading font-bold text-3xl md:text-4xl text-black leading-tight">
-          Built for your business.
-          <br />
-          Not copied from a template.
-        </h2>
-
-        {/* Subtitle */}
-        <p className="mt-4 max-w-xl text-[#6b6b6b] text-lg">
-          Every project starts with a deep understanding of your business. Then
-          we build exactly what you need — nothing more, nothing less.
-        </p>
+        {/* Header */}
+        <div className="mt-4 mb-12">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-[#0d0d0d] leading-tight">
+            What we do
+          </h2>
+          <p className="mt-3 text-[#6b6b6b] text-lg max-w-xl">
+            Built for your business. Not copied from a template.
+          </p>
+        </div>
 
         {/* Accordion */}
-        <Reveal>
-          <RadixAccordion.Root
-            type="single"
-            collapsible
-            value={openItem}
-            onValueChange={(val) => setOpenItem(val)}
-            className="w-full mt-12 flex flex-col gap-3"
-          >
-            {services.map((service) => {
-              const Icon = service.icon;
-              const isOpen = openItem === service.value;
+        <div className="w-full space-y-0">
+          {items.map((item, index) => {
+            const isActive = activeId === item.id
+            const isHovered = hoveredId === item.id
 
-              return (
-                <RadixAccordion.Item
-                  key={service.value}
-                  value={service.value}
-                  className={`
-                    rounded-2xl border transition-colors duration-150
-                    ${isOpen
-                      ? "border-[#00c47a]/40 bg-[#f0fdf8]"
-                      : "border-[#e8e8e8] bg-white hover:border-[#00c47a]/30"
-                    }
-                  `}
+            return (
+              <div key={item.id}>
+                <motion.button
+                  onClick={() => setActiveId(isActive ? null : item.id)}
+                  onMouseEnter={() => setHoveredId(item.id)}
+                  onMouseLeave={() => setHoveredId(null)}
+                  className="w-full group relative"
+                  initial={false}
                 >
-                  <RadixAccordion.Header className="flex">
-                    <RadixAccordion.Trigger className="flex w-full items-center justify-between px-6 py-5 text-left focus-visible:outline-none group">
-                      {/* Icon + title */}
-                      <span className="flex items-center gap-4">
-                        <span className={`
-                          flex h-10 w-10 shrink-0 items-center justify-center rounded-xl transition-colors duration-150
-                          ${isOpen ? "bg-[#00c47a] text-white" : "bg-[#f7f7f7] text-[#00c47a] group-hover:bg-[#00c47a]/10"}
-                        `}>
-                          <Icon className="h-5 w-5" />
-                        </span>
-                        <span className={`
-                          font-heading font-bold text-xl leading-snug transition-colors duration-150
-                          ${isOpen ? "text-[#00c47a]" : "text-[#0d0d0d] group-hover:text-[#00c47a]"}
-                        `}>
-                          {service.title}
-                        </span>
-                      </span>
+                  <div className="flex items-center gap-6 py-5 px-1">
+                    {/* Number with animated circle */}
+                    <div className="relative flex items-center justify-center w-10 h-10">
+                      <motion.div
+                        className="absolute inset-0 rounded-full"
+                        style={{ backgroundColor: "#00c47a" }}
+                        initial={false}
+                        animate={{
+                          scale: isActive ? 1 : isHovered ? 0.85 : 0,
+                          opacity: isActive ? 1 : isHovered ? 0.15 : 0,
+                        }}
+                        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                      />
+                      <motion.span
+                        className="relative z-10 text-sm font-medium tracking-wide"
+                        animate={{
+                          color: isActive ? "#ffffff" : "var(--muted-foreground)",
+                        }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {item.number}
+                      </motion.span>
+                    </div>
 
-                      {/* Plus / Minus toggle */}
-                      <span className={`
-                        ml-4 flex h-7 w-7 shrink-0 items-center justify-center rounded-full transition-all duration-150
-                        ${isOpen ? "bg-[#00c47a] text-white" : "bg-[#f7f7f7] text-[#6b6b6b] group-hover:bg-[#00c47a]/10 group-hover:text-[#00c47a]"}
-                      `}>
-                        {isOpen
-                          ? <Minus className="h-3.5 w-3.5" />
-                          : <Plus className="h-3.5 w-3.5" />
-                        }
-                      </span>
-                    </RadixAccordion.Trigger>
-                  </RadixAccordion.Header>
+                    {/* Title */}
+                    <motion.h3
+                      className="text-2xl font-medium tracking-tight"
+                      animate={{
+                        x: isActive || isHovered ? 4 : 0,
+                        color: isActive || isHovered ? "var(--foreground)" : "var(--muted-foreground)",
+                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    >
+                      {item.title}
+                    </motion.h3>
 
-                  <RadixAccordion.Content className="overflow-hidden duration-150 data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
-                    <ul className="px-6 pb-6 pt-1 space-y-3">
-                      {service.bullets.map((bullet) => (
-                        <li key={bullet} className="flex items-start gap-3">
-                          <Check className="text-emerald-500/60 w-4 h-4 mt-0.5 shrink-0" />
-                          <span className="text-[#6b6b6b] text-base leading-relaxed">
-                            {bullet}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </RadixAccordion.Content>
-                </RadixAccordion.Item>
-              );
-            })}
-          </RadixAccordion.Root>
+                    {/* Animated indicator */}
+                    <div className="ml-auto flex items-center gap-3">
+                      <motion.div
+                        className="flex items-center justify-center w-8 h-8"
+                        animate={{ rotate: isActive ? 45 : 0 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      >
+                        <motion.svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                          className="text-foreground"
+                          animate={{ opacity: isActive || isHovered ? 1 : 0.4 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <motion.path
+                            d="M8 1V15M1 8H15"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            strokeLinecap="round"
+                            initial={false}
+                          />
+                        </motion.svg>
+                      </motion.div>
+                    </div>
+                  </div>
 
-          {/* CTA */}
-          <div className="mt-10 flex justify-center md:justify-start">
-            <a
-              href="#audit-form"
-              className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-gray-800 transition-colors duration-200"
-            >
-              Start with a free audit →
-            </a>
-          </div>
-        </Reveal>
+                  {/* Static underline */}
+                  <motion.div className="absolute bottom-0 left-0 right-0 h-px bg-border origin-left" initial={false} />
+                  {/* Animated foreground underline */}
+                  <motion.div
+                    className="absolute bottom-0 left-0 h-px origin-left"
+                    style={{ backgroundColor: "#00c47a" }}
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: isActive ? 1 : isHovered ? 0.3 : 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                  />
+                </motion.button>
+
+                {/* Content */}
+                <AnimatePresence mode="wait">
+                  {isActive && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{
+                        height: "auto",
+                        opacity: 1,
+                        transition: {
+                          height: { type: "spring", stiffness: 300, damping: 30 },
+                          opacity: { duration: 0.2, delay: 0.1 },
+                        },
+                      }}
+                      exit={{
+                        height: 0,
+                        opacity: 0,
+                        transition: {
+                          height: { type: "spring", stiffness: 300, damping: 30 },
+                          opacity: { duration: 0.1 },
+                        },
+                      }}
+                      className="overflow-hidden"
+                    >
+                      <motion.p
+                        className="pl-16 pr-12 py-6 text-[#6b6b6b] leading-relaxed"
+                        initial={{ y: -10 }}
+                        animate={{ y: 0 }}
+                        exit={{ y: -10 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                      >
+                        {item.content}
+                      </motion.p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )
+          })}
+        </div>
+
+        {/* CTA */}
+        <div className="mt-12">
+          <a
+            href="#audit-form"
+            className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-gray-800 transition-colors duration-200"
+          >
+            Start your project →
+          </a>
+        </div>
       </div>
     </section>
-  );
+  )
 }
