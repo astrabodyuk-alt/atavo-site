@@ -11,13 +11,12 @@ export default function AuditForm() {
 
         {/* Heading */}
         <h2 className="mt-4 font-heading font-black text-4xl md:text-5xl text-black">
-          Get your free business audit.
+          Tell us about your business.
         </h2>
 
         {/* Subtitle */}
         <p className="mt-4 text-[#6b6b6b] text-lg">
-          We&apos;ll audit your market, analyse your competitors, and show you exactly
-          how to win online. Free. No obligation.
+          Fill in the form and we&apos;ll get back to you within 48 hours with a tailored proposal.
         </p>
 
         {/* Multi-step form */}
@@ -25,7 +24,7 @@ export default function AuditForm() {
 
         {/* Privacy note */}
         <p className="mt-2 text-center text-[#6b6b6b] text-xs">
-          🔒 Your information is private. We reply within 48 hours.
+          🔒 Your information is private.
         </p>
       </div>
     </section>

@@ -331,9 +331,9 @@ export default function Hero() {
           >
             <a
               href="#audit-form"
-              className="group inline-flex items-center gap-2 rounded-full bg-[#00c47a] px-8 py-4 text-base font-semibold uppercase tracking-[0.2em] text-black transition-all hover:brightness-110"
+              className="group inline-flex items-center gap-2 rounded-full bg-black px-8 py-4 text-base font-semibold uppercase tracking-[0.2em] text-white transition-all hover:bg-gray-800"
             >
-              Let&apos;s build yours
+              Start your project
               <ArrowRight
                 className="h-4 w-4 transition-transform group-hover:translate-x-1"
                 aria-hidden="true"

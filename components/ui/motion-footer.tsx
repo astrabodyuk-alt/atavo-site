@@ -331,7 +331,7 @@ export function CinematicFooter() {
                   className="footer-glass-pill px-10 py-5 rounded-full text-foreground font-bold text-sm md:text-base flex items-center gap-3"
                   style={{ borderColor: "rgba(0,196,122,0.4)", color: "#00c47a" }}
                 >
-                  Claim your free audit →
+                  Start your project →
                 </MagneticButton>
 
                 <MagneticButton

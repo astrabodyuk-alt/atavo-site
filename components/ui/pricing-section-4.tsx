@@ -13,7 +13,7 @@ const plans = [
     description: "Understand your market before you invest a penny.",
     price: "£299",
     subtitle: "one-time",
-    buttonText: "Get your audit →",
+    buttonText: "Book an audit →",
     buttonVariant: "outline" as const,
     popular: false,
     includes: [

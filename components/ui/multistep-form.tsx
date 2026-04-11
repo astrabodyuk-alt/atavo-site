@@ -408,9 +408,7 @@ const AuditMultistepForm = () => {
                       <Loader2 className="h-4 w-4 animate-spin" /> Sending…
                     </>
                   ) : currentStep === steps.length - 1 ? (
-                    <>
-                      Submit <Check className="h-4 w-4" />
-                    </>
+                    <>Submit enquiry →</>
                   ) : (
                     <>
                       Next <ChevronRight className="h-4 w-4" />

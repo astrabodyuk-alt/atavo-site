@@ -38,9 +38,7 @@ export default function USPAudit() {
             </p>
 
             <h2 className="mt-4 font-heading font-bold text-3xl md:text-4xl text-[#0d0d0d] leading-tight">
-              Every project starts with
-              <br />
-              a free £299 audit.
+              Every project includes a £299 audit — on us.
             </h2>
 
             <RadixAccordion.Root
@@ -99,29 +97,26 @@ export default function USPAudit() {
 
           {/* Right side — value card */}
           <div className="bg-white border border-[#e8e8e8] rounded-2xl p-8 max-w-sm w-full shrink-0">
-            <span className="bg-[#00c47a] text-black text-xs font-bold px-3 py-1 rounded-full w-fit inline-block">
-              FREE with every project
-            </span>
-
-            <div className="mt-6 flex flex-col">
-              <span className="text-[#6b6b6b] line-through font-heading font-black text-4xl leading-none">
+            <div className="mt-2 flex flex-col">
+              <span className="text-[#0d0d0d] font-heading font-black text-5xl leading-none">
                 £299
               </span>
-              <span className="text-[#0d0d0d] font-heading font-black text-6xl leading-none mt-1">
-                £0
-              </span>
-              <span className="text-[#6b6b6b] text-sm mt-2">included</span>
+              <span className="text-[#6b6b6b] text-sm mt-2">value</span>
             </div>
 
-            <p className="mt-4 text-[#6b6b6b] text-sm">
-              Included in every website, SaaS, and automation project.
+            <p className="mt-4 text-[#0d0d0d] font-semibold text-base">
+              Included free when you start a project.
+            </p>
+
+            <p className="mt-2 text-[#6b6b6b] text-sm">
+              Or available as a standalone service.
             </p>
 
             <a
               href="#audit-form"
               className="mt-6 bg-black text-white font-semibold px-6 py-3 rounded-full w-full text-center hover:bg-gray-800 transition block"
             >
-              Claim your free audit →
+              Start your project →
             </a>
           </div>
 
