@@ -1,19 +1,38 @@
-import { CheckCircle } from "lucide-react";
+'use client'
+
+import * as RadixAccordion from "@radix-ui/react-accordion";
+import { Plus, Minus } from "lucide-react";
+import { useState } from "react";
 import Reveal from "@/components/reveal";
 
-const points = [
-  "Business deep-dive — we understand your goals, your customers, your vision.",
-  "Full competitor analysis — we research every competitor in your market.",
-  "Strategic positioning — we find the gaps where you can dominate online.",
+const items = [
+  {
+    value: "deep-dive",
+    label: "Business deep-dive",
+    body: "We study your goals, your customers, and your vision.",
+  },
+  {
+    value: "competitor",
+    label: "Competitor analysis",
+    body: "We research every competitor in your market.",
+  },
+  {
+    value: "positioning",
+    label: "Strategic positioning",
+    body: "We find the gaps where you can dominate online.",
+  },
 ];
 
 export default function USPAudit() {
+  const [openItem, setOpenItem] = useState<string>("");
+
   return (
     <section id="usp" className="bg-black text-white py-20 px-6 md:px-12">
       <Reveal>
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+
           {/* Left side */}
-          <div className="max-w-xl">
+          <div className="max-w-xl w-full">
             <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body">
               WHAT MAKES US DIFFERENT
             </p>
@@ -24,23 +43,61 @@ export default function USPAudit() {
               a free £299 audit.
             </h2>
 
-            <p className="mt-6 text-white/70 text-lg max-w-lg">
-              Before we write a single line of code, we audit your business and
-              analyse every one of your competitors. We find where you can win
-              online — then we build exactly that.
-            </p>
-
-            <ul className="mt-8 space-y-4">
-              {points.map((point) => (
-                <li key={point} className="flex items-start gap-3">
-                  <CheckCircle className="text-[#00c47a] w-5 h-5 mt-1 shrink-0" />
-                  <span className="text-white/80 text-base">{point}</span>
-                </li>
-              ))}
-            </ul>
+            <RadixAccordion.Root
+              type="single"
+              collapsible
+              value={openItem}
+              onValueChange={setOpenItem}
+              className="w-full mt-8 flex flex-col gap-2"
+            >
+              {items.map((item) => {
+                const isOpen = openItem === item.value;
+                return (
+                  <RadixAccordion.Item
+                    key={item.value}
+                    value={item.value}
+                    className={`
+                      rounded-xl border transition-colors duration-150
+                      ${isOpen
+                        ? "border-[#00c47a]/40 bg-white/5"
+                        : "border-white/10 bg-white/[0.03] hover:border-[#00c47a]/30"
+                      }
+                    `}
+                  >
+                    <RadixAccordion.Header className="flex">
+                      <RadixAccordion.Trigger className="flex w-full items-center justify-between px-5 py-4 text-left focus-visible:outline-none group">
+                        <span className={`
+                          font-semibold text-base leading-snug transition-colors duration-150
+                          ${isOpen ? "text-[#00c47a]" : "text-white/90 group-hover:text-[#00c47a]"}
+                        `}>
+                          {item.label}
+                        </span>
+                        <span className={`
+                          ml-4 flex h-6 w-6 shrink-0 items-center justify-center rounded-full transition-all duration-150
+                          ${isOpen
+                            ? "bg-[#00c47a] text-black"
+                            : "bg-white/10 text-white/50 group-hover:bg-[#00c47a]/20 group-hover:text-[#00c47a]"
+                          }
+                        `}>
+                          {isOpen
+                            ? <Minus className="h-3 w-3" />
+                            : <Plus className="h-3 w-3" />
+                          }
+                        </span>
+                      </RadixAccordion.Trigger>
+                    </RadixAccordion.Header>
+                    <RadixAccordion.Content className="overflow-hidden duration-150 data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up">
+                      <p className="px-5 pb-4 text-white/50 text-sm leading-relaxed">
+                        {item.body}
+                      </p>
+                    </RadixAccordion.Content>
+                  </RadixAccordion.Item>
+                );
+              })}
+            </RadixAccordion.Root>
           </div>
 
-          {/* Right side — value card */}
+          {/* Right side — value card (unchanged) */}
           <div className="bg-white/5 border border-white/10 rounded-2xl p-8 max-w-sm w-full shrink-0">
             <span className="bg-[#00c47a] text-black text-xs font-bold px-3 py-1 rounded-full w-fit inline-block">
               FREE with every project
@@ -67,6 +124,7 @@ export default function USPAudit() {
               Claim your free audit →
             </a>
           </div>
+
         </div>
       </Reveal>
     </section>
