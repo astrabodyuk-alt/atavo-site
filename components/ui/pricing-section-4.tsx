@@ -1,19 +1,23 @@
 "use client";
-
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Sparkles as SparklesComp } from "@/components/ui/sparkles";
+import { TimelineContent } from "@/components/ui/timeline-animation";
+import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
 import { cn } from "@/lib/utils";
-import { Check } from "lucide-react";
+import { motion } from "motion/react";
+import { useRef } from "react";
 
 const plans = [
   {
     name: "Business Audit",
-    subtitle: "one-time",
+    description: "Understand your market before you invest a penny.",
     price: "£299",
+    subtitle: "one-time",
     buttonText: "Get your audit →",
     buttonVariant: "outline" as const,
     popular: false,
-    badge: null,
     includes: [
+      "What's included:",
       "Full competitor analysis",
       "SEO performance review",
       "Digital strategy report",
@@ -23,14 +27,14 @@ const plans = [
   },
   {
     name: "Professional Website",
-    subtitle: "one-time · Klarna 3× £233",
+    description: "A custom site that turns visitors into customers.",
     price: "£699",
+    subtitle: "one-time · Klarna 3× £233",
     buttonText: "Start your project →",
     buttonVariant: "default" as const,
     popular: true,
-    badge: "Most popular",
     includes: [
-      "Free business audit included",
+      "Everything in Audit, plus:",
       "Custom design — no templates",
       "Mobile responsive",
       "SEO foundation",
@@ -41,14 +45,14 @@ const plans = [
   },
   {
     name: "SaaS & Business Tools",
-    subtitle: "one-time",
+    description: "Custom software built around how your business works.",
     price: "From £1,499",
+    subtitle: "one-time",
     buttonText: "Let's discuss →",
     buttonVariant: "outline" as const,
     popular: false,
-    badge: null,
     includes: [
-      "Free business audit included",
+      "Everything in Audit, plus:",
       "Lead tracking & CRM",
       "Booking & scheduling",
       "Client portal",
@@ -58,14 +62,14 @@ const plans = [
   },
   {
     name: "Business Automation",
-    subtitle: "monthly retainer",
+    description: "Put your growth on autopilot with AI-powered workflows.",
     price: "£299/mo",
+    subtitle: "monthly retainer",
     buttonText: "Automate your business →",
     buttonVariant: "outline" as const,
     popular: false,
-    badge: null,
     includes: [
-      "Free business audit included",
+      "Everything in Audit, plus:",
       "Email sequences & CRM",
       "AI-powered workflows",
       "Lead nurturing on autopilot",
@@ -76,73 +80,193 @@ const plans = [
 ];
 
 export default function PricingSection4() {
+  const pricingRef = useRef<HTMLDivElement>(null);
+
+  const revealVariants = {
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: {
+        delay: i * 0.4,
+        duration: 0.5,
+      },
+    }),
+    hidden: {
+      filter: "blur(10px)",
+      y: -20,
+      opacity: 0,
+    },
+  };
+
   return (
-    <div className="grid md:grid-cols-2 gap-5 w-full">
-      {plans.map((plan) => (
-        <Card
-          key={plan.name}
-          className={cn(
-            "relative flex flex-col border transition-all duration-150 bg-white rounded-2xl",
-            plan.popular
-              ? "border-[#00c47a] shadow-lg shadow-[#00c47a]/10 ring-1 ring-[#00c47a]/30"
-              : "border-[#e8e8e8] shadow-sm hover:border-[#00c47a]/30 hover:shadow-md"
-          )}
+    <div
+      id="pricing"
+      className="min-h-screen mx-auto relative bg-black overflow-x-hidden"
+      ref={pricingRef}
+    >
+      {/* Sparkle grid background */}
+      <TimelineContent
+        animationNum={4}
+        timelineRef={pricingRef}
+        customVariants={revealVariants}
+        className="absolute top-0 h-96 w-screen overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)]"
+      >
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#ffffff2c_1px,transparent_1px),linear-gradient(to_bottom,#3a3a3a01_1px,transparent_1px)] bg-[size:70px_80px]"></div>
+        <SparklesComp
+          density={1800}
+          speed={1}
+          color="#FFFFFF"
+          className="absolute inset-x-0 bottom-0 h-full w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
+        />
+      </TimelineContent>
+
+      {/* Green glow ellipses */}
+      <TimelineContent
+        animationNum={5}
+        timelineRef={pricingRef}
+        customVariants={revealVariants}
+        className="absolute left-0 top-[-114px] w-full h-[113.625vh] flex flex-col items-start justify-start content-start flex-none flex-nowrap gap-2.5 overflow-hidden p-0 z-0"
+      >
+        <div>
+          <div
+            className="absolute left-[-568px] right-[-568px] top-0 h-[2053px] flex-none rounded-full"
+            style={{
+              border: "200px solid #00c47a",
+              filter: "blur(92px)",
+              WebkitFilter: "blur(92px)",
+            }}
+          />
+          <div
+            className="absolute left-[-568px] right-[-568px] top-0 h-[2053px] flex-none rounded-full"
+            style={{
+              border: "200px solid #00c47a",
+              filter: "blur(92px)",
+              WebkitFilter: "blur(92px)",
+            }}
+          />
+        </div>
+      </TimelineContent>
+
+      {/* Section header */}
+      <article className="text-center mb-6 pt-32 max-w-3xl mx-auto space-y-3 relative z-50 px-6">
+        <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase">
+          PRICING
+        </p>
+
+        <h2 className="text-4xl font-medium text-white">
+          <VerticalCutReveal
+            splitBy="words"
+            staggerDuration={0.15}
+            staggerFrom="first"
+            reverse={true}
+            containerClassName="justify-center"
+            transition={{
+              type: "spring",
+              stiffness: 250,
+              damping: 40,
+              delay: 0,
+            }}
+          >
+            One price. No surprises.
+          </VerticalCutReveal>
+        </h2>
+
+        <TimelineContent
+          as="p"
+          animationNum={0}
+          timelineRef={pricingRef}
+          customVariants={revealVariants}
+          className="text-gray-300"
         >
-          {/* Green top bar for featured */}
-          {plan.popular && (
-            <div className="absolute top-0 left-0 right-0 h-1 rounded-t-2xl bg-[#00c47a]" />
-          )}
+          Every engagement starts with a free business audit worth £299.
+          Pick the service that fits your goals.
+        </TimelineContent>
+      </article>
 
-          {/* Badge */}
-          {plan.badge && (
-            <span className="absolute -top-3 left-6 bg-black text-white text-xs font-bold px-3 py-1 rounded-full">
-              {plan.badge}
-            </span>
-          )}
+      {/* Radial green overlay */}
+      <div
+        className="absolute top-0 left-[10%] right-[10%] w-[80%] h-full z-0 pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(circle at center, #00c47a 0%, transparent 70%)`,
+          opacity: 0.08,
+          mixBlendMode: "screen",
+        }}
+      />
 
-          <CardHeader className="pb-2 px-8 pt-8">
-            <h3 className="font-heading font-bold text-xl text-[#0d0d0d]">
-              {plan.name}
-            </h3>
-            <div className="mt-3">
-              <span className="font-heading font-black text-4xl text-[#0d0d0d] leading-none">
-                {plan.price}
-              </span>
-            </div>
-            <p className="text-[#6b6b6b] text-sm mt-1">{plan.subtitle}</p>
-          </CardHeader>
-
-          <CardContent className="flex flex-col flex-1 px-8 pb-8 pt-2">
-            {/* Divider */}
-            <div className="border-t border-[#e8e8e8] mb-5" />
-
-            {/* Features */}
-            <ul className="space-y-3 flex-1">
-              {plan.includes.map((feature) => (
-                <li key={feature} className="flex items-start gap-3">
-                  <Check className="text-[#00c47a] w-4 h-4 mt-0.5 shrink-0" />
-                  <span className="text-[#0d0d0d] text-sm leading-relaxed">
-                    {feature}
-                  </span>
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA */}
-            <a
-              href="#audit-form"
-              className={cn(
-                "mt-8 block w-full py-3.5 rounded-full text-center font-semibold text-sm transition-colors duration-150",
-                plan.buttonVariant === "default"
-                  ? "bg-black text-white hover:bg-[#00c47a] hover:text-black"
-                  : "border-2 border-black text-black hover:bg-black hover:text-white"
-              )}
+      {/* Pricing cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 max-w-7xl gap-4 py-10 mx-auto px-6">
+        {plans.map((plan, index) => (
+          <TimelineContent
+            key={plan.name}
+            as="div"
+            animationNum={2 + index}
+            timelineRef={pricingRef}
+            customVariants={revealVariants}
+            className="h-full"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.4 }}
+              className="h-full"
             >
-              {plan.buttonText}
-            </a>
-          </CardContent>
-        </Card>
-      ))}
+              <Card
+                className={cn(
+                  "relative text-white border-neutral-800 h-full flex flex-col",
+                  plan.popular
+                    ? "bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 shadow-[0px_-13px_300px_0px_#00c47a55] z-20"
+                    : "bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 z-10"
+                )}
+              >
+                {/* Green top accent for featured */}
+                {plan.popular && (
+                  <div className="absolute top-0 left-0 right-0 h-[2px] rounded-t-lg bg-[#00c47a]" />
+                )}
+
+                <CardHeader className="text-left">
+                  <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
+                  <div className="flex items-baseline gap-1">
+                    <span className="text-3xl font-bold">{plan.price}</span>
+                  </div>
+                  <p className="text-xs text-gray-400 mt-0.5">{plan.subtitle}</p>
+                  <p className="text-sm text-gray-300 mt-2 leading-relaxed">
+                    {plan.description}
+                  </p>
+                </CardHeader>
+
+                <CardContent className="pt-0 flex flex-col flex-1">
+                  <a
+                    href="#audit-form"
+                    className={cn(
+                      "w-full mb-6 py-3.5 px-4 text-sm font-semibold rounded-xl block text-center transition-opacity hover:opacity-90",
+                      plan.popular
+                        ? "bg-gradient-to-t from-[#009e62] to-[#00c47a] shadow-lg shadow-[#00c47a]/20 border border-[#00c47a] text-black"
+                        : "bg-gradient-to-t from-neutral-950 to-neutral-700 shadow-lg shadow-neutral-900/50 border border-neutral-800 text-white"
+                    )}
+                  >
+                    {plan.buttonText}
+                  </a>
+
+                  <div className="space-y-3 pt-4 border-t border-neutral-700 flex-1">
+                    <h4 className="font-medium text-sm text-gray-400 mb-3">
+                      {plan.includes[0]}
+                    </h4>
+                    <ul className="space-y-2.5">
+                      {plan.includes.slice(1).map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center gap-2.5">
+                          <span className="h-2 w-2 bg-[#00c47a] rounded-full shrink-0" />
+                          <span className="text-sm text-gray-300">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </TimelineContent>
+        ))}
+      </div>
     </div>
   );
 }
