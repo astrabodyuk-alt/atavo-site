@@ -9,21 +9,21 @@ const testimonials = [
     quote: "In 7 days I had a site that actually brings in customers. The audit alone was worth it.",
     author: "James T.",
     role: "Barbershop owner, London",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=60",
+    initials: "JT",
   },
   {
     id: 2,
     quote: "They built us a custom booking system that saved 10 hours a week. Proper agency quality without the agency price.",
     author: "Sarah M.",
     role: "Physio clinic, Manchester",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60",
+    initials: "SM",
   },
   {
     id: 3,
     quote: "The competitor analysis they gave us for free was better than what we paid a marketing agency £2,000 for.",
     author: "Marcus D.",
     role: "Personal trainer, Birmingham",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&auto=format&fit=crop&q=60",
+    initials: "MD",
   },
 ]
 
@@ -100,16 +100,17 @@ export function Testimonials() {
               >
                 {/* Avatar with smooth ring animation */}
                 <div className="relative flex-shrink-0">
-                  <img
-                    src={testimonial.avatar || "/placeholder.svg"}
-                    alt={testimonial.author}
+                  <div
                     className={cn(
-                      "w-8 h-8 rounded-full object-cover",
+                      "w-8 h-8 rounded-full flex items-center justify-center",
+                      "bg-gray-200 text-gray-700 font-semibold text-xs",
                       "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
                       isActive ? "ring-2 ring-background/30" : "ring-0",
                       !isActive && "hover:scale-105",
                     )}
-                  />
+                  >
+                    {testimonial.initials}
+                  </div>
                 </div>
 
                 <div
