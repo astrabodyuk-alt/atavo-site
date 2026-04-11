@@ -2,7 +2,7 @@ import AuditMultistepForm from "@/components/ui/multistep-form";
 
 export default function AuditForm() {
   return (
-    <section id="audit-form" className="bg-[#f7f7f7] py-24 px-6 md:px-12">
+    <section id="audit-form" className="bg-white py-24 px-6 md:px-12">
       <div className="max-w-2xl mx-auto text-center">
         {/* Label */}
         <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body">

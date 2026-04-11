@@ -27,7 +27,7 @@ export default function USPAudit() {
   const [openItem, setOpenItem] = useState<string>("");
 
   return (
-    <section id="usp" className="bg-[#f9f9f9] py-20 px-6 md:px-12">
+    <section id="usp" className="bg-[#f7f7f7] py-20 px-6 md:px-12">
       <Reveal>
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
 

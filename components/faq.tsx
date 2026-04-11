@@ -42,7 +42,7 @@ export default function FAQ() {
   const [openItem, setOpenItem] = useState<string>("");
 
   return (
-    <section id="faq" className="bg-white py-24 px-6 md:px-12">
+    <section id="faq" className="bg-[#f7f7f7] py-24 px-6 md:px-12">
       <div className="max-w-3xl mx-auto">
         {/* Label */}
         <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body text-center">

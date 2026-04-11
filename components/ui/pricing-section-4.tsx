@@ -102,7 +102,7 @@ export default function PricingSection4() {
   return (
     <div
       id="pricing"
-      className="min-h-screen mx-auto relative bg-white overflow-x-hidden"
+      className="min-h-screen mx-auto relative bg-[#f7f7f7] overflow-x-hidden"
       ref={pricingRef}
     >
       {/* Sparkle grid background */}
