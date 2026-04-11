@@ -288,7 +288,7 @@ export default function Hero() {
         <div className="absolute top-1/2 left-1/4 h-[400px] w-[400px] rounded-full bg-primary/[0.02] blur-[150px] dark:bg-primary/[0.05]" />
       </div>
 
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-6 py-24 text-center md:px-8 lg:px-12">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-6 pt-24 pb-10 text-center md:px-8 lg:px-12">
         <motion.div
           variants={containerVariants}
           initial="hidden"

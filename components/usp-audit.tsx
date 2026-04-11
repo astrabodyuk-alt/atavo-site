@@ -39,7 +39,7 @@ export default function USPAudit() {
   const [hoveredId, setHoveredId] = useState<string | null>(null)
 
   return (
-    <section id="usp-audit" className="bg-[#f7f7f7] py-24 px-6 md:px-12">
+    <section id="usp-audit" className="bg-[#f7f7f7] pt-16 md:pt-20 pb-24 px-6 md:px-12">
       <div className="max-w-3xl mx-auto">
         {/* Label */}
         <p className="text-[#00c47a] text-xs font-semibold tracking-[0.3em] uppercase font-body">
