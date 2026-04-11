@@ -195,7 +195,15 @@ export default function PricingSection4() {
       />
 
       {/* Pricing cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 max-w-7xl gap-4 py-10 mx-auto px-6">
+      <div
+        className="
+          flex snap-x snap-mandatory overflow-x-auto gap-4 py-10 px-6
+          md:grid md:grid-cols-2 md:overflow-x-visible
+          xl:grid-cols-4
+          max-w-7xl mx-auto
+          [scrollbar-width:none] [&::-webkit-scrollbar]:hidden
+        "
+      >
         {plans.map((plan, index) => (
           <TimelineContent
             key={plan.name}
@@ -203,7 +211,7 @@ export default function PricingSection4() {
             animationNum={2 + index}
             timelineRef={pricingRef}
             customVariants={revealVariants}
-            className="h-full"
+            className="snap-center min-w-[85vw] md:min-w-0 h-full flex-shrink-0 md:flex-shrink"
           >
             <motion.div
               initial={{ opacity: 0, y: 24 }}
