@@ -8,7 +8,7 @@ import HowItWorks from "@/components/how-it-works";
 import Pricing from "@/components/pricing";
 import Testimonials from "@/components/testimonials";
 import FAQ from "@/components/faq";
-import { CinematicFooter } from "@/components/ui/cinematic-footer";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
@@ -25,7 +25,7 @@ export default function Home() {
         <Testimonials />
         <FAQ />
       </main>
-      <CinematicFooter />
+      <Footer />
     </>
   );
 }
