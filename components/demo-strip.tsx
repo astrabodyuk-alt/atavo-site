@@ -31,6 +31,7 @@ export default function DemoStrip() {
             loop
             muted
             playsInline
+            preload="none"
             className="w-full h-[400px] md:h-[600px] object-cover"
           >
             <source src="/videos/burger-animation.mp4" type="video/mp4" />
