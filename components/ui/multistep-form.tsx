@@ -399,7 +399,7 @@ const AuditMultistepForm = () => {
                   disabled={!isStepValid() || isSubmitting}
                   className={cn(
                     "inline-flex items-center gap-1 rounded-2xl px-4 py-2 text-sm font-semibold transition-all duration-300",
-                    "bg-[#00c47a] text-black hover:brightness-110",
+                    "bg-black text-white hover:bg-gray-800",
                     (!isStepValid() || isSubmitting) && "pointer-events-none opacity-50"
                   )}
                 >

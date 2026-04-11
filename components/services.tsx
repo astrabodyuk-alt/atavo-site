@@ -131,7 +131,7 @@ export default function Services() {
                     <ul className="px-6 pb-6 pt-1 space-y-3">
                       {service.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-3">
-                          <Check className="text-[#00c47a] w-4 h-4 mt-0.5 shrink-0" />
+                          <Check className="text-emerald-500/60 w-4 h-4 mt-0.5 shrink-0" />
                           <span className="text-[#6b6b6b] text-base leading-relaxed">
                             {bullet}
                           </span>
@@ -148,7 +148,7 @@ export default function Services() {
           <div className="mt-10 flex justify-center md:justify-start">
             <a
               href="#audit-form"
-              className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-[#00c47a] hover:text-black transition-colors duration-200"
+              className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-full font-semibold text-base hover:bg-gray-800 transition-colors duration-200"
             >
               Start with a free audit →
             </a>

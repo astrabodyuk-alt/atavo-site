@@ -102,7 +102,7 @@ export default function PricingSection4() {
   return (
     <div
       id="pricing"
-      className="min-h-screen mx-auto relative bg-black overflow-x-hidden"
+      className="min-h-screen mx-auto relative bg-white overflow-x-hidden"
       ref={pricingRef}
     >
       {/* Sparkle grid background */}
@@ -112,11 +112,11 @@ export default function PricingSection4() {
         customVariants={revealVariants}
         className="absolute top-0 h-96 w-screen overflow-hidden [mask-image:radial-gradient(50%_50%,white,transparent)]"
       >
-        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#ffffff2c_1px,transparent_1px),linear-gradient(to_bottom,#3a3a3a01_1px,transparent_1px)] bg-[size:70px_80px]"></div>
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)] bg-[size:70px_80px]"></div>
         <SparklesComp
-          density={1800}
+          density={800}
           speed={1}
-          color="#FFFFFF"
+          color="#0d0d0d"
           className="absolute inset-x-0 bottom-0 h-full w-full [mask-image:radial-gradient(50%_50%,white,transparent_85%)]"
         />
       </TimelineContent>
@@ -135,6 +135,7 @@ export default function PricingSection4() {
               border: "200px solid #00c47a",
               filter: "blur(92px)",
               WebkitFilter: "blur(92px)",
+              opacity: 0.04,
             }}
           />
           <div
@@ -143,6 +144,7 @@ export default function PricingSection4() {
               border: "200px solid #00c47a",
               filter: "blur(92px)",
               WebkitFilter: "blur(92px)",
+              opacity: 0.04,
             }}
           />
         </div>
@@ -154,7 +156,7 @@ export default function PricingSection4() {
           PRICING
         </p>
 
-        <h2 className="text-4xl font-medium text-white">
+        <h2 className="text-4xl font-medium text-[#0d0d0d]">
           <VerticalCutReveal
             splitBy="words"
             staggerDuration={0.15}
@@ -177,7 +179,7 @@ export default function PricingSection4() {
           animationNum={0}
           timelineRef={pricingRef}
           customVariants={revealVariants}
-          className="text-gray-300"
+          className="text-[#6b6b6b]"
         >
           Every engagement starts with a free business audit worth £299.
           Pick the service that fits your goals.
@@ -189,8 +191,8 @@ export default function PricingSection4() {
         className="absolute top-0 left-[10%] right-[10%] w-[80%] h-full z-0 pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(circle at center, #00c47a 0%, transparent 70%)`,
-          opacity: 0.08,
-          mixBlendMode: "screen",
+          opacity: 0.03,
+          mixBlendMode: "multiply",
         }}
       />
 
@@ -221,10 +223,10 @@ export default function PricingSection4() {
             >
               <Card
                 className={cn(
-                  "relative text-white border-neutral-800 h-full flex flex-col",
+                  "relative text-[#0d0d0d] h-full flex flex-col",
                   plan.popular
-                    ? "bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 shadow-[0px_-13px_300px_0px_#00c47a55] z-20"
-                    : "bg-gradient-to-b from-neutral-900 via-neutral-800 to-neutral-900 z-10"
+                    ? "bg-white border-[#00c47a]/30 shadow-[0px_8px_40px_0px_rgba(0,196,122,0.12)] z-20"
+                    : "bg-white border-[#e8e8e8] z-10"
                 )}
               >
                 {/* Green top accent for featured */}
@@ -235,10 +237,10 @@ export default function PricingSection4() {
                 <CardHeader className="text-left">
                   <h3 className="text-xl font-semibold mb-2">{plan.name}</h3>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-3xl font-bold">{plan.price}</span>
+                    <span className="text-3xl font-bold text-[#0d0d0d]">{plan.price}</span>
                   </div>
-                  <p className="text-xs text-gray-400 mt-0.5">{plan.subtitle}</p>
-                  <p className="text-sm text-gray-300 mt-2 leading-relaxed">
+                  <p className="text-xs text-[#6b6b6b] mt-0.5">{plan.subtitle}</p>
+                  <p className="text-sm text-[#6b6b6b] mt-2 leading-relaxed">
                     {plan.description}
                   </p>
                 </CardHeader>
@@ -247,24 +249,24 @@ export default function PricingSection4() {
                   <a
                     href="#audit-form"
                     className={cn(
-                      "w-full mb-6 py-3.5 px-4 text-sm font-semibold rounded-xl block text-center transition-opacity hover:opacity-90",
+                      "w-full mb-6 py-3.5 px-4 text-sm font-semibold rounded-xl block text-center transition-colors",
                       plan.popular
-                        ? "bg-gradient-to-t from-[#009e62] to-[#00c47a] shadow-lg shadow-[#00c47a]/20 border border-[#00c47a] text-black"
-                        : "bg-gradient-to-t from-neutral-950 to-neutral-700 shadow-lg shadow-neutral-900/50 border border-neutral-800 text-white"
+                        ? "bg-black text-white hover:bg-gray-800"
+                        : "bg-[#f7f7f7] border border-[#e8e8e8] text-[#0d0d0d] hover:bg-[#f0f0f0]"
                     )}
                   >
                     {plan.buttonText}
                   </a>
 
-                  <div className="space-y-3 pt-4 border-t border-neutral-700 flex-1">
-                    <h4 className="font-medium text-sm text-gray-400 mb-3">
+                  <div className="space-y-3 pt-4 border-t border-[#e8e8e8] flex-1">
+                    <h4 className="font-medium text-sm text-[#6b6b6b] mb-3">
                       {plan.includes[0]}
                     </h4>
                     <ul className="space-y-2.5">
                       {plan.includes.slice(1).map((feature, featureIndex) => (
                         <li key={featureIndex} className="flex items-center gap-2.5">
-                          <span className="h-2 w-2 bg-[#00c47a] rounded-full shrink-0" />
-                          <span className="text-sm text-gray-300">{feature}</span>
+                          <span className="h-2 w-2 bg-emerald-500/60 rounded-full shrink-0" />
+                          <span className="text-sm text-[#6b6b6b]">{feature}</span>
                         </li>
                       ))}
                     </ul>
