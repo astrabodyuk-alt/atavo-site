@@ -347,14 +347,14 @@ export function CinematicFooter() {
               <div className="flex flex-wrap justify-center gap-3 md:gap-6 w-full mt-2">
                 <MagneticButton
                   as="a"
-                  href="#"
+                  href="/privacy"
                   className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground"
                 >
                   Privacy Policy
                 </MagneticButton>
                 <MagneticButton
                   as="a"
-                  href="#"
+                  href="/terms"
                   className="footer-glass-pill px-6 py-3 rounded-full text-muted-foreground font-medium text-xs md:text-sm hover:text-foreground"
                 >
                   Terms
